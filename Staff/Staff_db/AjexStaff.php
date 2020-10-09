@@ -1,5 +1,5 @@
 <?php
-require_once("server.php")
+require_once("../../require/connectDB.php")
 ?>
 <?php
 $readstaff = "SELECT * FROM users";

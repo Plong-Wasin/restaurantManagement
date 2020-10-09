@@ -1,6 +1,6 @@
 <?php include('../Session/Check_Session.php'); ?>
 <?php
-include('./Staff_db/server.php');
+include('../require/connectDB.php');
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-include("./server.php");
+include("../../require/connectDB.php");
 $orderid = mysqli_real_escape_string($conn, $_POST["data"]);
 $qu = mysqli_real_escape_string($conn, $_POST["data1"]);
 if ($qu == 0) {

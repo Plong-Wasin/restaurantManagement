@@ -1,5 +1,5 @@
 <?php
-include('server.php');
+include('../require/connectDB.php');
 
 $errors = array();
 

@@ -1,5 +1,5 @@
 <?php
-include("server.php");
+include("../require/connectDB.php");
 $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
 </head>
 

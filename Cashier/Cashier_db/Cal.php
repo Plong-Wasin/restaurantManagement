@@ -1,5 +1,5 @@
 <?php
-include("server.php");
+include("../../require/connectDB.php");
 $totalprice = mysqli_real_escape_string($conn, $_POST["data"]);
 $Cash = mysqli_real_escape_string($conn, $_POST["data1"]);
 $Change = $Cash - $totalprice;

@@ -1,5 +1,5 @@
 <?php
-include("./server.php");
+include("../../require/connectDB.php");
 $ordertimeid = mysqli_real_escape_string($conn, $_POST["data"]);
 $foodcookall = mysqli_real_escape_string($conn, $_POST["data1"]);
 $query5 = "SELECT order_time_id,food_cook,order_list_id FROM `order_list` WHERE order_time_id = $ordertimeid and food_cook = $foodcookall";

@@ -1,7 +1,6 @@
 <?php
 
 require("../require/connectDB.php");
-include("server.php");
 $table_id = mysqli_real_escape_string($conn, $_POST["data"]);
 
 if (isset($_POST['data']))

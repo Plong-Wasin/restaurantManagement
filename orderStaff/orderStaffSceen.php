@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../CSS/Cashier.css">
     <title>Document</title>
     <?php
-    include("./server.php")  ?>
+    include("../require/connectDB.php")  ?>
 
 </head>
 

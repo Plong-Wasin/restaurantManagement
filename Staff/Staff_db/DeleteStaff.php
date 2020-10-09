@@ -1,5 +1,5 @@
 <?php
-include("server.php");
+include("../../require/connectDB.php");
 $username = mysqli_real_escape_string($conn, $_POST["data"]);
 $sql = "DELETE FROM users WHERE username= '$username'";
 if (!mysqli_query($conn, $sql)) {

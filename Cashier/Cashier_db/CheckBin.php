@@ -1,5 +1,5 @@
 <?php
-include("server.php");
+include("../../require/connectDB.php");
 $CheckInID = mysqli_real_escape_string($conn, $_POST["data"]);
 $tableID = mysqli_real_escape_string($conn, $_POST["data1"]);
 $query1 = "SELECT order_list_id FROM `order_list` INNER JOIN order_time on order_list.order_time_id=order_time.order_time_id INNER JOIN check_in ON order_time.check_in_id = check_in.check_in_id WHERE  table_id = $tableID AND food_cook !=3 and paid_timestamp IS NULL";
