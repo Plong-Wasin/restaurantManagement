@@ -1,0 +1,49 @@
+.Head {
+    background-color:rgb(73, 196, 245);
+}
+
+.Header {
+    font-weight: 600;
+    text-align: center;
+    border-bottom-style: solid;
+    font-size: 40px;
+}
+
+
+.Sidebar {
+    width: 60px;
+    height: 45px;
+    margin: none;
+    background-color:rgb(4, 122, 168);
+    color: white;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+  }
+
+ .FontSidebar {
+    font-size: 50px;
+
+ }
+
+ * {
+    box-sizing: border-box;
+  }
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  height: 45px;
+  background-color: skyblue;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,110 @@
+Header {
+    background-color: #C0C0C0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    border-bottom: solid;
+    border-bottom-width: 2px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th,
+td {
+    text-align: left;
+    padding: 15px;
+    border-bottom-style: solid ;
+    border-width: 2px;
+    border-left-style: solid;
+}
+th {
+    background-color: white;
+    font-size: 18px;
+}
+
+.register{
+    margin: 10px auto 0px;
+    color:black;
+
+    text-align: center;
+    border: black 30px;
+    border-radius: 10px 10px 10px 10px;
+    width: 260px;
+    border-width: 2px;
+}
+
+.HeaderRegister{
+    background-color: #C0C0C0;
+    text-align: center;
+    border-style: solid ;
+    border-color:#C0C0C0 ;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+}
+
+.BodyRegister{
+    background-color: white;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 0px 00px 10px 10px;
+    padding: 10px;
+    column-count: 1;
+}
+.IP {
+    margin: 10px 0px 10px 0px;
+}
+
+.IP Label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+
+.Input input{
+    height: 30px;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+select{
+    width: auto;
+    height: 30px;
+    font-size: 15px;
+}
+
+.ButtonDelete button{
+    background-color: #e02c2c;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.ButtonRegister button{
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px 5px 5px 5px;
+}

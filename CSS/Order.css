@@ -1,0 +1,68 @@
+table {
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+    margin-bottom: 15px;
+    
+}
+body{
+    background-color: white;
+}
+
+tr:hover {background-color:#f5f5f5;}
+td {
+    text-align: left;
+    padding: 15px;
+    border-style: solid ;
+    border-width: 0.5px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-width: 2px;
+
+}
+th {
+    background-color: white;
+    font-size: 18px;
+}
+
+.Order{
+    margin: 20px;
+    background-color: black;
+}
+.active th{
+    margin: 20px;
+    background-color:gray;
+    border-style: solid;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.food_cook_0{
+    padding: 10px;
+    
+    font-size: 20px;
+    background-color:rgb(209, 240, 162);
+    font-weight: bolder;
+}
+.food_cook_1{
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    background-color:rgb(252, 208, 126);
+    font-weight: bolder;
+}
+.food_cookall_0{
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    background-color:rgb(170, 238, 67);
+    font-weight: bolder;
+}
+.food_cookall_1{
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    background-color:rgb(250, 182, 54);
+    font-weight: bolder;
+}
