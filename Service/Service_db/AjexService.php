@@ -1,4 +1,4 @@
-<?php include('../../require/connectDB.php');
+<?php include(__DIR__ . '/../../require/connectDB.php');
 $order = "SELECT order_time.order_time_id,check_in.table_id,food_cook FROM `order_list` INNER JOIN order_time on order_list.order_time_id=order_time.order_time_id INNER JOIN check_in ON order_time.check_in_id = check_in.check_in_id WHERE food_cook = 2";
 $result = mysqli_query($conn, $order);
 $skip = 0;

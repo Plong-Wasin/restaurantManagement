@@ -29,7 +29,8 @@ include("../Sidebar/Sidebar.php");
                     $('#insertFoodType_form')[0].reset();
                     if (data != "")
                         alert(data.replace("<br>", "\n"));
-                    //location.reload();
+                    $("#insertFoodType").modal("hide");
+                    location.reload();
                 }
             });
         });
@@ -88,33 +89,22 @@ include("../Sidebar/Sidebar.php");
                 url: "./ajax/deleteFoodType.php",
                 method: "POST",
                 data: $('#deleteFoodType_form').serialize(),
-                beforeSend: function() {
-                    //document.getElementById("insert").innerText = "กำลังประมวลผล";
-                },
+                beforeSend: function() {},
                 success: function(data) {
-                    //$('#insertFoodType_form')[0].reset();
-                    //$('#insertFoodType').modal('hide');
-
                     location.reload();
 
                 }
             });
         });
         $('#editFoodType_form').on("submit", function(event) {
-            //alert("123");
             event.preventDefault();
             $.ajax({
                 url: "./ajax/editFoodType.php",
                 method: "POST",
                 data: $('#editFoodType_form').serialize(),
-                beforeSend: function() {
-                    //document.getElementById("insert").innerText = "กำลังประมวลผล";
-                },
+                beforeSend: function() {},
                 success: function(data) {
-                    //$('#insertFoodType').modal('hide');
-
                     location.reload();
-
                 }
             });
         });
@@ -257,44 +247,9 @@ include("../Sidebar/Sidebar.php");
         </div>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">หมวดหมู่</a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <?php
-                    $tab_query = "SELECT * FROM food_type ORDER BY food_type_id ASC";
-                    $tab_result = mysqli_query($conn, $tab_query);
-                    $tab_menu = '';
-                    $tab_content = '';
-                    $i = 0;
-                    while ($row = mysqli_fetch_array($tab_result)) {
-                        if ($i == 0) {
-                            $firstFoodType = $row['food_type_id'];
-                    ?>
-                            <li class="nav-item active">
-                                <a class="nav-link" id="tab_<?php echo $row["food_type_id"] ?> " href="#" data-value="<?php echo $row["food_type_id"] ?>"><?php echo $row["food_type_name"]; ?></a>
-                            </li>
-                        <?php
-                        } else {
-                        ?>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab_<?php echo $row["food_type_id"] ?> " href="#" data-value="<?php echo $row["food_type_id"] ?>"><?php echo $row["food_type_name"]; ?></a>
-                            </li>
-                    <?php
-                        }
-                        $i++;
-                    }
-                    ?>
-                </ul>
-            </div>
-
-        </nav>
+        <?php
+        include("./ajax/foodTypeBar.php");
+        ?>
 
         <table class="table">
             <thead>
