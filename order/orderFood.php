@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once("../require/connectDB.php");
-//echo $_SESSION['code'];
-//unset($_SESSION['code']);
 if (isset($_SESSION["code"])) {
     $code = mysqli_escape_string($conn, $_SESSION['code']);
     $query = "SELECT table_id FROM `check_in` WHERE `code` = $code ORDER BY check_in_timestamp DESC LIMIT 1";
@@ -43,9 +41,6 @@ else
 ?>
 <script>
     $(document).ready(function() {
-        // setTimeout(() => {
-        //     $("#cartIcon").click();
-        // }, 500);
         $("#foodAmount").bind('keyup mouseup', goToCalPrice);
         $('#foodOrder_form').on("submit", function(event) {
             event.preventDefault();
