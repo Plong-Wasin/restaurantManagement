@@ -13,7 +13,8 @@ $query = "
     WHERE food_type_id = '$id';
     ";
 if (mysqli_query($conn, $query)) {
-    echo "New record created successfully";
+    echo "Update success";
+    echo $query;
 ?>
 
 <?php

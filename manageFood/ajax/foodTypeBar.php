@@ -1,3 +1,6 @@
+<?php
+require_once(__DIR__ . "/../../require/connectDB.php");
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">หมวดหมู่</a>
 
@@ -14,8 +17,14 @@
             $tab_menu = '';
             $tab_content = '';
             $i = 0;
+            if (isset($_POST['foodTypeId'])) {
+                $i = 1;
+            } else {
+                $_POST['foodTypeId'] = 0;
+            }
+
             while ($row = mysqli_fetch_array($tab_result)) {
-                if ($i == 0) {
+                if ($i == 0 || $_POST['foodTypeId'] == $row['food_type_id']) {
                     $firstFoodType = $row['food_type_id'];
             ?>
                     <li class="nav-item active">
@@ -34,5 +43,23 @@
             ?>
         </ul>
     </div>
-
 </nav>
+<script>
+    $(document).ready(function() {
+        $(".nav-item").click(function() {
+            $('.navbar-collapse').collapse('hide');
+            $(".nav-item.active").removeClass("active");
+            $(this).addClass("active");
+            $.ajax({
+                url: "./ajax/selectFoodType.php",
+                method: "POST",
+                data: {
+                    foodTypeId: $(this).children(".nav-link").data("value")
+                },
+                success: function(data) {
+                    $("#tableFoodList").html(data);
+                }
+            });
+        });
+    });
+</script>

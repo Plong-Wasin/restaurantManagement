@@ -28,7 +28,18 @@ if ($tableId == null)
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <?php
-include_once("../require/req.php");
+$tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
+$tab_result = mysqli_query($conn, $tab_query);
+$tab_menu = '';
+$tab_content = '';
+$len = 0;
+while ($row = mysqli_fetch_array($tab_result)) {
+    $len = $len + strlen($row["food_type_name"]);
+}
+if ($len < 190)
+    include_once("../require/req.php");
+else
+    include_once("../require/customReq.php");
 ?>
 <script>
     $(document).ready(function() {

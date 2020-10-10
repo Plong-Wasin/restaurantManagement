@@ -5,37 +5,46 @@ require_once("../require/connectDB.php");
 <!DOCTYPE html>
 <html lang="th">
 
-<head></head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ระบบจัดการร้านอาหาร</title>
-<?php
-include_once("../require/req.php");
-include("../Sidebar/Sidebar.php");
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดการร้านอาหาร</title>
+    <?php
+    $tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
+    $tab_result = mysqli_query($conn, $tab_query);
+    $tab_menu = '';
+    $tab_content = '';
+    $len = 0;
+    while ($row = mysqli_fetch_array($tab_result)) {
+        $len = $len + strlen($row["food_type_name"]);
+    }
+    if ($len < 190)
+        include_once("../require/req.php");
+    else
+        include_once("../require/customReq.php");
+    include("../Sidebar/Sidebar.php");
+    ?>
+</head>
 <script>
     $(document).ready(function() {
-        // document.getElementsByClassName("btn btn-success col-2")[0].click();
         $('#insertFoodType_form').on("submit", function(event) {
             event.preventDefault();
             $.ajax({
                 url: "./ajax/insertFoodType.php",
                 method: "POST",
                 data: $('#insertFoodType_form').serialize(),
-                beforeSend: function() {
-                    //document.getElementById("insert").innerText = "กำลังประมวลผล";
-                },
+                beforeSend: function() {},
                 success: function(data) {
                     $('#insertFoodType_form')[0].reset();
                     if (data != "")
                         alert(data.replace("<br>", "\n"));
+                    //callAjaxFoodTypeBar();
                     $("#insertFoodType").modal("hide");
-                    location.reload();
+                    callAjaxFoodTypeBar();
                 }
             });
         });
         $(document).on('change', '#file', function() {
-
             $('#uploaded_image').html('<img src="#" id="picture" height="150" width="225" class="img-thumbnail" />');
             readURL(this);
         });
@@ -80,8 +89,6 @@ include("../Sidebar/Sidebar.php");
             } catch (error) {
                 callAjaxInsertFood();
             }
-
-
         });
         $('#deleteFoodType_form').on("submit", function(event) {
             event.preventDefault();
@@ -91,8 +98,10 @@ include("../Sidebar/Sidebar.php");
                 data: $('#deleteFoodType_form').serialize(),
                 beforeSend: function() {},
                 success: function(data) {
-                    location.reload();
-
+                    // location.reload();
+                    $(".modal").modal("hide");
+                    callAjaxSelectFoodType();
+                    callAjaxFoodTypeBar();
                 }
             });
         });
@@ -104,7 +113,8 @@ include("../Sidebar/Sidebar.php");
                 data: $('#editFoodType_form').serialize(),
                 beforeSend: function() {},
                 success: function(data) {
-                    location.reload();
+                    callAjaxFoodTypeBar();
+                    $(".modal").modal("hide");
                 }
             });
         });
@@ -120,6 +130,16 @@ include("../Sidebar/Sidebar.php");
                 },
                 success: function(data) {
                     $("#tableFoodList").html(data);
+                }
+            });
+        });
+        $('#editFoodType,#insertFood,#deleteFoodType').on('shown.bs.modal', function(e) {
+            event.preventDefault();
+            $.ajax({
+                url: './ajax/tagSelectFoodType.php',
+                method: 'POST',
+                success: function(data) {
+                    $("#eFoodType,#foodType,#dFoodType").html(data);
                 }
             });
         });
@@ -143,14 +163,9 @@ include("../Sidebar/Sidebar.php");
             url: "./ajax/insertFood.php",
             method: "POST",
             data: $('#insertFood_form').serialize(),
-            beforeSend: function() {
-                //document.getElementById("insert").innerText = "กำลังประมวลผล";
-            },
+            beforeSend: function() {},
             success: function(data) {
                 $('#insertFoodType_form')[0].reset();
-                //$('#insertFoodType').modal('hide');
-                // alert();
-                //location.reload();
                 $("#insertFood").modal('hide');
                 callAjaxSelectFoodType();
             }
@@ -231,6 +246,21 @@ include("../Sidebar/Sidebar.php");
             }
         });
     }
+
+    function callAjaxFoodTypeBar() {
+        event.preventDefault();
+        $.ajax({
+            url: './ajax/foodTypeBar.php',
+            method: 'POST',
+            data: {
+                foodTypeId: $(".nav-item.active").children(".nav-link").data("value")
+            },
+            beforeSend: function() {},
+            success: function(data) {
+                $("#foodTypeBar").html(data);
+            }
+        });
+    }
 </script>
 
 </head>
@@ -246,10 +276,12 @@ include("../Sidebar/Sidebar.php");
             <button type="button" class="btn btn-success col-2" data-toggle="modal" data-target="#insertFood" onclick="insertFoodButton();">เพิ่มอาหาร</button>
         </div>
 
+        <div id="foodTypeBar">
+            <?php
+            include("./ajax/foodTypeBar.php");
+            ?>
+        </div>
 
-        <?php
-        include("./ajax/foodTypeBar.php");
-        ?>
 
         <table class="table">
             <thead>
