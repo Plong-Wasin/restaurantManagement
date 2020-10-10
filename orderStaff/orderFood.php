@@ -9,7 +9,18 @@ if ($tableId == null)
     //header("Location:../customer/enterCode.php");
 ?>
 <?php
-include_once("../require/req.php");
+$tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
+$tab_result = mysqli_query($conn, $tab_query);
+$tab_menu = '';
+$tab_content = '';
+$len = 0;
+while ($row = mysqli_fetch_array($tab_result)) {
+    $len = $len + strlen($row["food_type_name"]);
+}
+if ($len < 170)
+    include_once("../require/req.php");
+else
+    include_once("../require/customReq.php");
 ?>
 <script>
     $(document).ready(function() {
@@ -295,7 +306,7 @@ include_once("../require/req.php");
 
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <?php
                     $tab_query = "SELECT * FROM food_type ORDER BY food_type_id ASC";
                     $tab_result = mysqli_query($conn, $tab_query);
@@ -321,7 +332,9 @@ include_once("../require/req.php");
                     }
                     ?>
                 </ul>
-                <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control  mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                </form>
             </div>
 
 
@@ -432,9 +445,6 @@ include_once("../require/req.php");
             </form>
         </div>
     </div>
-
-
-
 
     <!-- Modal -->
     <div class="modal fade " id="modalCart" tabindex="-1" role="dialog" aria-labelledby="cartTitle" aria-hidden="true">

@@ -34,7 +34,7 @@ $len = 0;
 while ($row = mysqli_fetch_array($tab_result)) {
     $len = $len + strlen($row["food_type_name"]);
 }
-if ($len < 190)
+if ($len < 170)
     include_once("../require/req.php");
 else
     include_once("../require/customReq.php");
@@ -320,7 +320,7 @@ else
 
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <?php
                     $tab_query = "SELECT * FROM food_type ORDER BY food_type_id ASC";
                     $tab_result = mysqli_query($conn, $tab_query);
@@ -346,7 +346,9 @@ else
                     }
                     ?>
                 </ul>
-                <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control  mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                </form>
             </div>
 
 
@@ -371,39 +373,9 @@ else
                 <?php
                 include("./ajax/selectFoodType.php");
                 ?>
-                <!-- <?php
-                        $food_query = "SELECT * FROM food WHERE food_type_id=" . $firstFoodType . " ORDER BY  food_have DESC, food_name ASC";
-                        $food_result = mysqli_query($conn, $food_query);
-                        while ($row = mysqli_fetch_array($food_result)) {
-                        ?>
-                    <tr>
-                        <td scope="row"><img src="../src/img/food/<?php echo $row["food_image"] ?>" height="auto" width="100%" class="img-thumbnail" /></td>
-                        <td><?php echo $row["food_name"] ?></td>
-                        <td><?php echo $row["food_price"] ?></td>
-                        <?php
-                            if ($row["food_have"] == 1) {
-                        ?>
-                            <td><button class="btn btn-primary" val="<?php echo $row["food_id"] ?>" onclick="orderFood('<?php echo $row['food_id'] ?>','<?php echo $row['food_name'] ?>',<?php echo $row['food_price'] ?>);" data-toggle="modal" data-target="#modalOrder">สั่งอาหาร</button></td>
-                        <?php
-                            } else {
-                        ?>
-                            <td><button class="btn btn-secondary" disabled val="<?php echo $row["food_id"] ?>" onclick="orderFood('<?php echo $row['food_id'] ?>','<?php echo $row['food_name'] ?>',<?php echo $row['food_price'] ?>);" data-toggle="modal" data-target="#modalOrder">อาหารหมด</button></td>
-
-                        <?php
-                            }
-                        ?>
-                    </tr>
-                <?php
-                        }
-                ?> -->
             </tbody>
         </table>
     </div>
-    <!-- Button trigger modal
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalOrder">
-        สั่งอาหาร
-    </button> -->
-
     <!-- Modal -->
     <div class="modal fade" id="modalOrder" tabindex="-1" role="dialog" aria-labelledby="modalOrderTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -490,7 +462,6 @@ else
                             </tbody>
                         </table>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>

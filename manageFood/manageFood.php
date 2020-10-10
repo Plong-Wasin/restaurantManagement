@@ -135,15 +135,21 @@ require_once("../require/connectDB.php");
                 }
             });
         });
+        var selectFoodType = "";
         $('#editFoodType,#insertFood,#deleteFoodType').on('shown.bs.modal', function(e) {
-            event.preventDefault();
             $.ajax({
                 url: './ajax/tagSelectFoodType.php',
                 method: 'POST',
                 success: function(data) {
-                    $("#eFoodType,#foodType,#dFoodType").html(data);
+                    if (selectFoodType != data) {
+                        $("#eFoodType,#foodType,#dFoodType").html(data);
+                        selectFoodType = data;
+                    }
                 }
             });
+        });
+        $('#editFoodType').on('shown.bs.modal', function(e) {
+            $("#editFoodType_form").trigger("reset");
         });
     });
 
@@ -212,7 +218,9 @@ require_once("../require/connectDB.php");
 
     function insertFoodButton() {
         $("#uploaded_image").html();
+        let foodType = $("#foodType").val();
         document.getElementById("insertFood_form").reset();
+        $("#foodType").val(foodType);
         document.getElementById("insertFoodTitle").innerText = "เพิ่มอาหาร";
         $('#foodID').val('');
     }
