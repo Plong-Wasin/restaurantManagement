@@ -9,7 +9,7 @@ if ($_POST["mode"] == 1) {
     $query = "SELECT * FROM queue WHERE queue_in_timestamp IS NULL
     ORDER BY queue_book_timestamp ASC";
 } elseif ($_POST["mode"] == 3) {
-    $query = "SELECT * FROM (Select * FROM queue WHERE queue_in_timestamp IS NOT NULL ORDER BY queue_book_timestamp DESC LIMIT 3) SUB ORDER BY queue_book_timestamp ASC";
+    $query = "SELECT * FROM (Select * FROM queue WHERE queue_in_timestamp IS NOT NULL ORDER BY queue_book_timestamp DESC ) SUB ORDER BY queue_book_timestamp ASC";
 }
 
 $result = mysqli_query($conn, $query);

@@ -13,7 +13,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addQueue" tabindex="-1" role="dialog" aria-labelledby="addQueueTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <form method="post" id="addQueue_form">
             <div class="modal-content">
                 <div class="modal-header">
@@ -46,7 +46,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="checkInModal" tabindex="-1" role="dialog" aria-labelledby="checkInTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">เลือกโต๊ะให้ลูกค้า</h5>
@@ -59,7 +59,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!-- <button type="button" class="btn btn-primary">Save</button> -->
             </div>
         </div>
     </div>

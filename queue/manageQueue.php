@@ -136,12 +136,6 @@ $result = mysqli_query($conn, $query);
             <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(1);" id="1">ทั้งหมด</a>
             <a class="nav-link active m-1" data-toggle="tab" onclick="selectMode(2);" id="2">อยู่ในคิว</a>
             <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(3);" id="3">เข้าร้านแล้ว</a>
-            <!--<button type="button" class="btn btn-primary btn-lg" onclick="selectMode(1);">ทั้งหมด</button>
-            <button type="button" class="btn btn-primary btn-lg" onclick="selectMode(2);">อยู่ในคิว</button>
-            <button type="button" class="btn btn-primary btn-lg" onclick="selectMode(3);">เข้าร้านแล้ว</button>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addQueue">
-                เพิ่มคิว
-            </button>-->
         </nav>
 
         <table class="table">
