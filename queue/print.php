@@ -16,10 +16,12 @@
 
     ?>
     <script>
-        print();
-        setTimeout(() => {
-            close();
-        }, 1000);
+        window.onload = function() {
+            print();
+            setTimeout(() => {
+                close();
+            }, 1000);
+        }
     </script>
 </body>
 

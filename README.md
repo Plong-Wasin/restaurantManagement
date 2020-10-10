@@ -10,11 +10,12 @@
 - [ ] ทำตามนี้ https://github.com/thedaviddias/Front-End-Checklist?fbclid=IwAR2jvkWz6iFRQZE5aWHvUrPx7BmPl93pHtOx3sIIunHQRNqM4eBqqtXH9O0
 - [ ] ตกแต่ง
 - [ ] เข้ารหัส
-- [ ] เมนูแนะนำ
-- [ ] แก้หน้าปริ้น
+- [ ] เมนูแนะนำ (ไม่น่าทำ)
+- [x] แก้หน้าปริ้น หน้า checkin
+- [ ] ปริ้นใบเสร็จ
 - [ ] ไม่ต้องรีเฟส ถ้าเหมือนเดิม
 - [ ] 1คน หลายบทบาท
 - [ ] ราคามี "," ทุกหน้า
 - [ ] จำนวนสามารถกด + - ได้ง่ายๆ
-- [ ] Pagination
+- [ ] Pagination (ไม่น่าทำ)
 - [ ] ทำหน้าแรก

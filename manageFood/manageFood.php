@@ -26,6 +26,9 @@ require_once("../require/connectDB.php");
     ?>
 </head>
 <script>
+    window.onload = function() {
+        $(".nav-item.active").click();
+    }
     $(document).ready(function() {
         $('#insertFoodType_form').on("submit", function(event) {
             event.preventDefault();
@@ -38,7 +41,6 @@ require_once("../require/connectDB.php");
                     $('#insertFoodType_form')[0].reset();
                     if (data != "")
                         alert(data.replace("<br>", "\n"));
-                    //callAjaxFoodTypeBar();
                     $("#insertFoodType").modal("hide");
                     callAjaxFoodTypeBar();
                 }
