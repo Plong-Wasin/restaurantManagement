@@ -17,12 +17,12 @@ $result = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($result)) {
 
 ?>
-    <tr class=<?php
+    <tr class="<?php
                 if (is_null($row["queue_in_timestamp"])) {
                     echo "table-primary text-center";
                 } else
                     echo "table-success text-center";
-                ?>>
+                ?>">
         <td scope="row" class="text-center"><?php echo $row["queue_name"] ?></td>
         <td class="text-center"><?php echo $row["queue_people"] ?></td>
         <td class="text-center">
@@ -39,8 +39,8 @@ while ($row = mysqli_fetch_array($result)) {
             ?>
         </td>
         <td class="text-center">
-            <button type="button" class="btn btn-secondary" onclick="cancelQueue(<?php echo $row['queue_id'] ?>);">ยกเลิก</button>
-            <button type="button" class="btn btn-success" onclick="inQueue(<?php echo $row['queue_id'] ?>);" <?php
+            <button type="button" class="btn btn-secondary" onclick="cancelQueue(<?php echo $row['queue_id'] ?>); ">ยกเลิก</button>
+            <button type="button" class="btn btn-success" onclick="inQueue(<?php echo $row['queue_id'] ?>); " <?php
                                                                                                                 if (!is_null($row["queue_in_timestamp"])) {
                                                                                                                     echo "disabled";
                                                                                                                 }

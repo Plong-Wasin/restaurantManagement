@@ -16,6 +16,7 @@ $result = mysqli_query($conn, $query);
     ?>
     <script>
         var page = 2;
+        var collectHtml = "";
         $(document).ready(function() {
             $('#addQueue_form').on("submit", function(event) {
                 event.preventDefault();
@@ -68,9 +69,7 @@ $result = mysqli_query($conn, $query);
                 data: {
                     id: id
                 },
-                success: function(data) {
-                    //location.reload();
-                }
+                success: function(data) {}
             })
         }
 
@@ -82,7 +81,10 @@ $result = mysqli_query($conn, $query);
                     mode: mode
                 },
                 success: function(data) {
-                    $("#queueTable").html(data);
+                    if (data != collectHtml) {
+                        $("#queueTable").html(data);
+                        collectHtml = data;
+                    }
                 }
             })
         }
