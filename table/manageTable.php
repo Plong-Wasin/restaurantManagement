@@ -1,10 +1,7 @@
 <?php include('../Session/Check_Session.php'); ?>
 <?php
 include("../require/connectDB.php");
-$sql = "SELECT * FROM `table`";
-if (!$result = mysqli_query($conn, $sql)) {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+
 //echo mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
@@ -26,7 +23,9 @@ if (!$result = mysqli_query($conn, $sql)) {
                     method: "POST",
                     data: $('#addTable_form').serialize(),
                     success: function(data) {
-
+                        $(".modal").modal("hide");
+                        document.getElementById('addTable_form').reset();
+                        callAjaxTbody();
                     }
                 });
             })
@@ -38,7 +37,9 @@ if (!$result = mysqli_query($conn, $sql)) {
                     method: "POST",
                     data: $('#editTable_form').serialize(),
                     success: function(data) {
-                        //location.reload();
+                        callAjaxTbody();
+                        $(".modal").modal("hide");
+                        document.getElementById("editTable_form").reset();
                     }
                 });
             })
@@ -49,7 +50,9 @@ if (!$result = mysqli_query($conn, $sql)) {
                     method: "POST",
                     data: $('#deleteTable_form').serialize(),
                     success: function(data) {
-                        //location.reload();
+                        callAjaxTbody();
+                        $(".modal").modal("hide");
+                        document.getElementById("deleteTable_form").reset();
                     }
                 });
             })
@@ -70,6 +73,16 @@ if (!$result = mysqli_query($conn, $sql)) {
         function editTable(id) {
             document.getElementById("editTableTitle2").innerText = id;
             document.getElementById("tableID").value = id;
+        }
+
+        function callAjaxTbody() {
+            $.ajax({
+                url: './ajax/tbody.php',
+                method: 'POST',
+                success: function(data) {
+                    $("#tbody").html(data);
+                }
+            });
         }
     </script>
 </head>
@@ -98,40 +111,8 @@ if (!$result = mysqli_query($conn, $sql)) {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php while ($row = mysqli_fetch_array($result)) { ?>
-                        <tr>
-
-                            <td scope="row"><?php echo $row["table_id"] ?></td>
-                            <td><?php echo $row["table_people"] ?></td>
-                            <td>
-                                <?php
-                                if (!$row["table_status"]) {
-                                    echo 'ว่าง';
-                                } else
-                                    echo 'กำลังใช้บริการ';
-                                ?>
-                            </td>
-                            <td>
-                            <?php
-                            if(!$row["table_status"]){
-                                echo "-";
-                            }else{
-                                $tableId =$row['table_id'];
-                                $sql = "SELECT code FROM check_in WHERE table_id=$tableId ORDER BY check_in_id DESC LIMIT 1";
-                                $resultCode = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($resultCode) > 0) {
-                                  // output data of each row
-                                  while($rowCode = mysqli_fetch_array($resultCode)) {
-                                    echo $rowCode["code"];
-                                  }
-                                }
-                            }
-                            ?>
-                            </td>
-                            <td> <button type="button" class="btn btn-primary" onclick=<?php echo "editTable(" . $row["table_id"] . ")" ?> data-toggle="modal" data-target="#editTable">แก้ไข</button></td>
-                        </tr>
-                    <?php } ?>
+                <tbody id="tbody">
+                    <?php include_once("./ajax/tbody.php"); ?>
                 </tbody>
             </table>
         </div>

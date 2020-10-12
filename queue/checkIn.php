@@ -33,27 +33,30 @@ if (!$result = mysqli_query($conn, $sql)) {
     $(document).ready(function() {
         $("#genCode").click(function() {
             // console.log(document.getElementById("table").value);
-            $.ajax({
-                url: "../checkIn/ajax/generateCode.php",
-                method: "POST",
-                data: {
-                    tableNo: document.getElementById("table").value
-                },
+            if (document.getElementById("table").value == "") {
+                alert("กรุณาเลือกโต๊ะ");
+            } else {
+                $.ajax({
+                    url: "../checkIn/ajax/generateCode.php",
+                    method: "POST",
+                    data: {
+                        tableNo: document.getElementById("table").value
+                    },
 
-                success: function(data) {
-                    // alert(data);
-                    $("#show").html(data);
+                    success: function(data) {
+                        $("#show").html(data);
+                        document.getElementById("printCode").style.display = "block";
+                        $.ajax({
+                            url: "../checkIn/ajax/selectTable.php",
+                            success: function(data) {
+                                $("#selectTable").html(data);
 
-                }
-            });
-            $.ajax({
-                url: "../checkIn/ajax/selectTable.php",
-                success: function(data) {
-                    // alert(data);
-                    $("#selectTable").html(data);
+                            }
+                        });
+                    }
+                });
+            }
 
-                }
-            });
         });
     });
 

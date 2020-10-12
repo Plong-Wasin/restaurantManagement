@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
+session_start();
+//echo $_SESSION['role'];
 require_once(__DIR__ . "/../../require/connectDB.php");
 if (isset($_POST['foodTypeId']))
     $foodTypeId = $_POST['foodTypeId'];

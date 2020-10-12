@@ -14,6 +14,51 @@ $result = mysqli_query($conn, $query);
     <?php
     include("../require/req.php");
     ?>
+
+</head>
+
+
+<body>
+
+    <?php
+    include("../Sidebar/Sidebar.php");
+    include("./modal/modal.php");
+    ?>
+    <div class="container">
+        <h2 class="text-center m-1">จัดการคิว</h2>
+        <nav class="nav nav-pills nav-justified m-1">
+            <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(1);">ลบคิวทั้งหมด</button>
+            <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(2);">ลบคิวที่เข้าร้านแล้วทั้งหมด</button>
+            <button type="button" class="btn btn-primary  nav-link m-1" data-toggle="modal" data-target="#addQueue">
+                เพิ่มคิว
+            </button>
+            <button id="btnSelectTable" type="button" class="btn btn-success  nav-link m-1" data-toggle="modal" data-target="#checkInModal">
+                เลือกโต๊ะ
+            </button>
+        </nav>
+        <nav class="nav nav-pills nav-justified m-1" id="tab">
+            <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(1);" id="1">ทั้งหมด</a>
+            <a class="nav-link active m-1" data-toggle="tab" onclick="selectMode(2);" id="2">อยู่ในคิว</a>
+            <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(3);" id="3">เข้าร้านแล้ว</a>
+        </nav>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">ชื่อ</th>
+                    <th class="text-center">จำนวนคน</th>
+                    <th class="text-center">สถานะ</th>
+                    <th class="text-center">เวลาที่จอง</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="queueTable">
+                <?php
+                include("./ajax/selectQueue.php");
+                ?>
+            </tbody>
+        </table>
+    </div>
     <script>
         var page = 2;
         var collectHtml = "";
@@ -113,50 +158,6 @@ $result = mysqli_query($conn, $query);
             document.getElementById("addQueue_form").reset();
         })
     </script>
-</head>
-
-
-<body>
-
-    <?php
-    include("../Sidebar/Sidebar.php");
-    include("./modal/modal.php");
-    ?>
-    <div class="container">
-        <h2 class="text-center m-1">จัดการคิว</h2>
-        <nav class="nav nav-pills nav-justified m-1">
-            <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(1);">ลบคิวทั้งหมด</button>
-            <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(2);">ลบคิวที่เข้าร้านแล้วทั้งหมด</button>
-            <button type="button" class="btn btn-primary  nav-link m-1" data-toggle="modal" data-target="#addQueue">
-                เพิ่มคิว
-            </button>
-            <button id="btnSelectTable" type="button" class="btn btn-success  nav-link m-1" data-toggle="modal" data-target="#checkInModal">
-                เลือกโต๊ะ
-            </button>
-        </nav>
-        <nav class="nav nav-pills nav-justified m-1" id="tab">
-            <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(1);" id="1">ทั้งหมด</a>
-            <a class="nav-link active m-1" data-toggle="tab" onclick="selectMode(2);" id="2">อยู่ในคิว</a>
-            <a class="nav-link m-1" data-toggle="tab" onclick="selectMode(3);" id="3">เข้าร้านแล้ว</a>
-        </nav>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center">ชื่อ</th>
-                    <th class="text-center">จำนวนคน</th>
-                    <th class="text-center">สถานะ</th>
-                    <th class="text-center">เวลาที่จอง</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="queueTable">
-                <?php
-                include("./ajax/selectQueue.php");
-                ?>
-            </tbody>
-        </table>
-    </div>
 </body>
 
 </html>
