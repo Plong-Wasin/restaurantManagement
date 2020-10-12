@@ -278,13 +278,19 @@ require_once("../require/connectDB.php");
 <body>
     <div class="container">
         <h2 class="text-center p-2">จัดการเมนูอาหาร</h2>
-        <div class="row pb-2">
-            <button type="button" class="btn btn-primary col-2" data-toggle="modal" data-target="#insertFoodType">เพิ่มประเภทอาหาร</button>
-            <button type="button" class="btn btn-secondary col-2" data-toggle="modal" data-target="#editFoodType">แก้ไขชื่อประเภทอาหาร</button>
-            <button type="button" class="btn btn-danger col-2" data-toggle="modal" data-target="#deleteFoodType">ลบประเภทอาหาร</button>
-            <div class="col-4"></div>
-            <button type="button" class="btn btn-success col-2" data-toggle="modal" data-target="#insertFood" onclick="insertFoodButton();">เพิ่มอาหาร</button>
-        </div>
+        <?php
+        if ($_SESSION['role'] == 'admin') {
+        ?>
+            <div class="row pb-2">
+                <button type="button" class="btn btn-primary col-2" data-toggle="modal" data-target="#insertFoodType">เพิ่มประเภทอาหาร</button>
+                <button type="button" class="btn btn-secondary col-2" data-toggle="modal" data-target="#editFoodType">แก้ไขชื่อประเภทอาหาร</button>
+                <button type="button" class="btn btn-danger col-2" data-toggle="modal" data-target="#deleteFoodType">ลบประเภทอาหาร</button>
+                <div class="col-4"></div>
+                <button type="button" class="btn btn-success col-2" data-toggle="modal" data-target="#insertFood" onclick="insertFoodButton();">เพิ่มอาหาร</button>
+            </div>
+        <?php
+        }
+        ?>
 
         <div id="foodTypeBar">
             <?php

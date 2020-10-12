@@ -23,9 +23,21 @@ while ($row = mysqli_fetch_array($food_result)) {
                                 ?>
         </td>
         <td>
-            <span class="px-1"><button type="button" class="btn btn-info" value="<?php echo $row["food_id"] ?>" onclick="editFood(<?php echo $row['food_id'] ?>)" data-toggle="modal" data-target="#insertFood">แก้ไข</button></span>
+            <?php
+            if ($_SESSION['role'] == 'admin') {
+            ?>
+                <span class="px-1"><button type="button" class="btn btn-info" value="<?php echo $row["food_id"] ?>" onclick="editFood(<?php echo $row['food_id'] ?>)" data-toggle="modal" data-target="#insertFood">แก้ไข</button></span>
+            <?php
+            }
+            ?>
             <span class="px-1"><button type="button" class="btn btn-success" value="<?php echo $row["food_id"] ?>" onclick="changeStatus(<?php echo $row['food_id'] . ',' . $row['food_have'] ?>)">เปลี่ยนสถานะ</button></span>
-            <span class="px-1"><button type="button" class="btn btn-danger" value="<?php echo $row["food_id"] ?>" onclick="deleteFood(<?php echo $row['food_id'] ?>)">ลบ</button></span>
+            <?php
+            if ($_SESSION['role'] == 'admin') {
+            ?>
+                <span class="px-1"><button type="button" class="btn btn-danger" value="<?php echo $row["food_id"] ?>" onclick="deleteFood(<?php echo $row['food_id'] ?>)">ลบ</button></span>
+            <?php
+            }
+            ?>
         </td>
     </tr>
     </tr>
