@@ -21,3 +21,4 @@
 - [ ] ทำหน้าแรก
 - [x] **complete** แก้ช่องsearch
 - [ ] manageFood changeStatusOnly ยุบเหลือไฟล์เดียว
+- [ ] แจ้งเตือน (ควรทำ)

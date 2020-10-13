@@ -1,6 +1,7 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 //echo $_SESSION['role'];
 require_once(__DIR__ . "/../../require/connectDB.php");
 if (isset($_POST['foodTypeId']))
