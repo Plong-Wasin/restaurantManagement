@@ -14,6 +14,8 @@ $result = mysqli_query($conn, $query);
     <?php
     include("../require/req.php");
     ?>
+    <link rel="stylesheet" type="text/css" href="../CSS/plusMinus.css">
+    <script src="../js/plusMinus.js"></script>
 
 </head>
 

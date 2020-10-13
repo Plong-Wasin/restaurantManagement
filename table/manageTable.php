@@ -11,6 +11,8 @@ include("../require/connectDB.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการร้านอาหาร</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/plusMinus.css">
+    <script src="../js/plusMinus.js"></script>
     <?php
     include("../require/req.php");
     ?>
@@ -132,11 +134,31 @@ include("../require/connectDB.php");
                         <div class="form-group row">
                             <label for="numberTableAdded" class="col-sm-12 col-form-label">จำนวนโต๊ะที่ต้องการเพิ่ม</label>
                             <div class="col-sm-12">
-                                <input type="number" style="font-size:85%;" class="form-control" name="numberTableAdded" id="numberTableAdded" placeholder="จำนวนโต๊ะที่ต้องการเพิ่ม" min="1" max="99" required="" step="1">
+                                <div class="row">
+                                    <div class="col-2 pt-1">
+                                        <span class="minus" onclick="minus('numberTableAdded')">-</span>
+                                    </div>
+                                    <div class="col-8 text-right">
+                                        <input type="number" style="font-size:85%;" class="form-control text-right" name="numberTableAdded" id="numberTableAdded" placeholder="จำนวนโต๊ะที่ต้องการเพิ่ม" min="1" max="99" required="" step="1">
+                                    </div>
+                                    <div class="col-2 text-right pt-1">
+                                        <span class="plus" onclick="plus('numberTableAdded')">+</span>
+                                    </div>
+                                </div>
                             </div>
                             <label for="tablePeople" class="col-sm-12 col-form-label">จำนวนคนต่อโต๊ะ (ส่วนใหญ่)</label>
                             <div class="col-sm-12">
-                                <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control" name="tablePeople" id="tablePeople" min="1" max="99" required="" placeholder="จำนวนคนต่อโต๊ะ (ส่วนใหญ่)" step="1">
+                                <div class="row">
+                                    <div class="col-2 pt-1">
+                                        <span class="minus" onclick="minus('tablePeople')">-</span>
+                                    </div>
+                                    <div class="col-8 text-right">
+                                        <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control text-right" name="tablePeople" id="tablePeople" min="1" max="99" required="" placeholder="จำนวนคนต่อโต๊ะ (ส่วนใหญ่)" step="1">
+                                    </div>
+                                    <div class="col-2 text-right pt-1">
+                                        <span class="plus" onclick="plus('tablePeople')">+</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,7 +187,17 @@ include("../require/connectDB.php");
                             <input type="hidden" id="tableID" name="tableID" />
                             <label for="editTablePeople" class="col-sm-12 col-form-label">แก้ไขจำนวนคนต่อโต๊ะ</label>
                             <div class="col-sm-12">
-                                <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control" name="editTablePeople" id="editTablePeople" min="1" max="99" placeholder="จำนวนคนต่อโต๊ะ" required="" step="1">
+                                <div class="row">
+                                    <div class="col-2 pt-1">
+                                        <span class="minus" onclick="minus('editTablePeople')">-</span>
+                                    </div>
+                                    <div class="col-8 text-right">
+                                        <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control text-right" name="editTablePeople" id="editTablePeople" min="1" max="99" placeholder="จำนวนคนต่อโต๊ะ" required="" step="1">
+                                    </div>
+                                    <div class="col-2 text-right pt-1">
+                                        <span class="plus" onclick="plus('editTablePeople')">+</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -195,7 +227,17 @@ include("../require/connectDB.php");
                         <div class="form-group row">
                             <label for="numberTableDeleted" class="col-sm-12 col-form-label">จำนวนโต๊ะที่ต้องการลบ (จะลบจากโต๊ะสุดท้าย)</label>
                             <div class="col-sm-12">
-                                <input type="number" style="font-size:85%;" class="form-control" name="numberTableDeleted" id="numberTableDeleted" placeholder="จำนวนโต๊ะที่ต้องการลบ (จะลบจากโต๊ะสุดท้าย)" min="1" max="99" required="" step="1">
+                                <div class="row">
+                                    <div class="col-2 pt-1">
+                                        <span class="minus" onclick="minus('numberTableDeleted')">-</span>
+                                    </div>
+                                    <div class="col-8 text-right">
+                                        <input type="number" style="font-size:85%;" class="form-control text-right" name="numberTableDeleted" id="numberTableDeleted" placeholder="จำนวนโต๊ะที่ต้องการลบ (จะลบจากโต๊ะสุดท้าย)" min="1" max="99" required="" step="1">
+                                    </div>
+                                    <div class="col-2 text-right pt-1">
+                                        <span class="plus" onclick="plus('numberTableDeleted')">+</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

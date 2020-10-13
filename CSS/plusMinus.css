@@ -1,0 +1,9 @@
+.minus,
+.plus {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 6px 10px 6px 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    text-align: center;
+}

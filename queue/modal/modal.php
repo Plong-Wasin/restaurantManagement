@@ -13,7 +13,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addQueue" tabindex="-1" role="dialog" aria-labelledby="addQueueTitle" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog" role="document">
         <form method="post" id="addQueue_form">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,8 +29,21 @@
                             <input type="text" style="font-size:85%;" class="form-control" name="queueName" id="queueName" placeholder="ชื่อผู้จอง" required="">
                         </div>
                         <label for="queuePeople" class="col-sm-12 col-form-label">จำนวนคน</label>
+
                         <div class="col-sm-12">
-                            <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control" name="queuePeople" id="queuePeople" min="1" max="99" placeholder="จำนวนคน" required="" step="1">
+
+                            <div class="row">
+                                <div class="col-2 pt-1">
+                                    <span class="minus" onclick="minus('queuePeople')">-</span>
+                                </div>
+                                <div class="col-8 text-right">
+                                    <input type="number" onkeypress="return isNumberKey(event)" style="font-size:85%;" class="form-control text-right " name="queuePeople" id="queuePeople" min="1" max="99" placeholder="จำนวนคน" required="" step="1">
+                                </div>
+                                <div class="col-2 text-right pt-1">
+                                    <span class="plus" onclick="plus('queuePeople')">+</span>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
