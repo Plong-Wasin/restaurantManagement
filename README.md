@@ -7,7 +7,7 @@
 - [ ] ปุ่มซ้ายบนบางหน้ามุด
 - [ ] แก้ไฟล์ sd.css มีการเรียกผิดหน้า
 - [ ] ดักด้วยถ้าไม่มี Admin (มันจะเข้าไม่ได้เลย)
-- [ ] ทำตามนี้ https://github.com/thedaviddias/Front-End-Checklist?fbclid=IwAR2jvkWz6iFRQZE5aWHvUrPx7BmPl93pHtOx3sIIunHQRNqM4eBqqtXH9O0
+- [ ] ทำตามนี้ <https://github.com/thedaviddias/Front-End-Checklist?fbclid=IwAR2jvkWz6iFRQZE5aWHvUrPx7BmPl93pHtOx3sIIunHQRNqM4eBqqtXH9O0>
 - [ ] ตกแต่ง
 - [ ] เข้ารหัส
 - [ ] เมนูแนะนำ (ไม่น่าทำ)
@@ -22,3 +22,4 @@
 - [x] **complete** แก้ช่องsearch
 - [x] **complete** manageFood changeStatusOnly ยุบเหลือไฟล์เดียว
 - [ ] แจ้งเตือน (ควรทำ)
+- [ ] บุฟเฟ่ต์ (โม้เยอะไง ถามจารย์)

@@ -26,7 +26,7 @@
     <div class="container">
         <div class="text-right">
             <div class="btn-group dropleft">
-                <button class="bg-none" id="notification" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="bg-none" id="notification" type="button" style="display: none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="./src/img/notification-bell-color.png" alt="" width="25px" height="25px">
                 </button>
                 <div class="dropdown-menu">
@@ -55,10 +55,10 @@
                         <?php
                         }
                     }
-                    if ($notification == 0) {
+                    if ($notification == 1) {
                         ?>
                         <script>
-                            document.getElementById("notification").style.display = "none";
+                            document.getElementById("notification").style.display = "inline-block";
                         </script>
                     <?php
                     }
