@@ -1,23 +1,65 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    @media screen and (max-width: 455px) {
+        .h3 {
+            font-size: 16px;
+        }
+    }
+</style>
 
-<head>
-    <title>Tieretle</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body style="background:#e6e6e6;color:black;">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <div class="w3-sidebar w3-light-grey w3-card-4 w3-animate-left" style="width:200px" id="mySidebar">
+        <div class="w3-bar w3-dark-grey">
+            <span class="w3-bar-item w3-padding-16">Content</span>
+            <button onclick="w3_close()" class="w3-bar-item w3-button w3-right w3-padding-16" title="close Sidebar">&times;</button>
+        </div>
+        <div class="w3-bar-block">
+            <a class="w3-bar-item w3-button w3-green" href="javascript:void(0)">Home</a>
+            <a class="w3-bar-item w3-button" href="javascript:void(0)">About</a>
+            <a class="w3-bar-item w3-button" href="javascript:void(0)">Contact</a>
+            <div class="w3-dropdown-hover">
+                <a class="w3-button" href="javascript:void(0)">Dropdown <i class="fa fa-caret-down"></i></a>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a class="w3-bar-item w3-button" href="javascript:void(0)">Link 1</a>
+                    <a class="w3-bar-item w3-button" href="javascript:void(0)">Link 2</a>
+                    <a class="w3-bar-item w3-button" href="javascript:void(0)">Link 3</a>
+                </div>
+            </div>
+            <a class="w3-bar-item w3-button" href="javascript:void(0)">Support</a>
+        </div>
+    </div>
 
-<body style="background-color: #00ff00;">
+    <div id="main" style="margin-left:200px">
+        <!-- 
+        <div class="w3-container w3-display-container">
+            <span title="open Sidebar" style="display:none" id="openNav" class="w3-button w3-transparent w3-display-topleft w3-xlarge" onclick="w3_open()">&#9776;</span>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis nulla aspernatur voluptate minus sapiente beatae, natus distinctio cum modi rem porro ratione ab exercitationem recusandae. Distinctio vero deserunt odio iusto?
+            <!-- <h3 class="h3" style="position:fixed;top:36px;">My Page</h3>
+        </div> -->
+        sdsd
+    </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "180px";
+            document.getElementById("mySidebar").style.width = "180px";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+
 </body>
 
 </html>
