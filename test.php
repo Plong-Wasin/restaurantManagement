@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
     <title>Tieretle</title>
+=======
+    <title>test</title>
+>>>>>>> 3c8ec67d4e2a43fa78c889d595d67442deed5ef1
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
