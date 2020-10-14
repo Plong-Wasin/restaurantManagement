@@ -38,13 +38,10 @@
     <?php
     }
 
-    if ($_SESSION['role'] == 'admin') { ?>
+    if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'KitchenStaff') { ?>
         <a href="../manageFood/manageFood.php" class="w3-bar-item w3-button">จัดเมนูอาหาร</a>
     <?php
-    } else if ($_SESSION['role'] == 'KitchenStaff') { ?>
-        <a href="../manageFood/chaneStatusOnly.php" class="w3-bar-item w3-button">จัดเมนูอาหาร</a>
-    <?php }
-
+    }
     if ($_SESSION['role'] == 'admin') { ?>
         <a href="../table/manageTable.php" class="w3-bar-item w3-button">จัดการโต๊ะ</a>
     <?php
