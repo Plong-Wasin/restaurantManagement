@@ -11,7 +11,7 @@ include('../require/connectDB.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>พนักงาน</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link rel="stylesheet" href="../../CSS/Staff.css">
+    <link rel="stylesheet" href="../CSS/Staff.css">
 </head>
 
 <body>
