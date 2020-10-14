@@ -78,7 +78,7 @@ else
 </head>
 
 <body>
-    <?php include("../Sidebar/Sidebar.php") ?>
+    <?php include("../Sidebar/Sidebar2.php") ?>
     <div class="container">
         <h2 class="text-center p-2">จัดการเมนูอาหาร</h2>
 

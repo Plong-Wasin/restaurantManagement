@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('../../require/connectDB.php');
 
 $errors = array();
@@ -11,14 +10,13 @@ $password_2 = mysqli_real_escape_string($conn, $_POST['password_2']);
 
 
 $user_check_query = "SELECT * FROM users WHERE username = '$username' LIMIT 1";
-$query = mysqli_query($conn, $user_check_query);
-$result = mysqli_fetch_assoc($query);
+$query11 = mysqli_query($conn, $user_check_query);
+$result11 = mysqli_fetch_assoc($query11);
 
-if ($result) { // if user exists
-    if ($result['username'] === $username) {
-        echo '<script>alert("Username already exists");</script>';
+if ($result11) {
+    if ($result11['username'] === $username) {
+        echo '<script>alert("Welcome to Geeks for Geeks")</script>';
     }
-    echo '<script>alert("test");</script>';
 } else {
     $password = $password_1;
 
@@ -26,7 +24,4 @@ if ($result) { // if user exists
     if (!mysqli_query($conn, $sql)) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-
-    $_SESSION['username'] = $username;
-    $_SESSION['success'] = "You are now logged in";
 }

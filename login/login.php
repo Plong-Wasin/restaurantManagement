@@ -10,7 +10,7 @@ include('../require/connectDB.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,7 +18,7 @@ include('../require/connectDB.php');
 <body>
 
     <div class="header">
-        <h2>Login</h2>
+        <h2>เข้าสู่ระบบ</h2>
     </div>
 
     <form action="login_db.php" method="post">

@@ -16,6 +16,9 @@ include('../require/connectDB.php');
 
 <body>
     <?php include("../Sidebar/Sidebar.php") ?>
+    <div class="h">
+        ข้อมูลพนักงาน
+    </div>
     <div id="spanusers">
         <table>
             <tr>
@@ -55,7 +58,7 @@ include('../require/connectDB.php');
             <div class="BodyRegister">
                 <div class="Input">
                     <label for="username">ชื่อพนักงาน<br></label>
-                    <Input type="text" name="username" required>
+                    <Input type="text" name="username" id="username" required>
                 </div>
                 <label> ตำแหน่ง<br></label>
                 <select class="selectjob" type="role" name="role" value="<?php echo $role; ?>">
@@ -80,11 +83,12 @@ include('../require/connectDB.php');
         </form>
     </div>
 
+
+
     <script>
         $(document).ready(function() {
             document.getElementsByClassName("ButtonRegister")[0].click();
             $('#registerForm').on("submit", function(event) {
-
                 if (document.getElementById("password_1").value != document.getElementById("password_2").value) {
                     alert("รหัสผ่านไม่ตรงกัน");
                     document.getElementById("registerForm").reset;

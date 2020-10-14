@@ -42,6 +42,7 @@
         <a href="../manageFood/manageFood.php" class="w3-bar-item w3-button">จัดเมนูอาหาร</a>
     <?php
     }
+
     if ($_SESSION['role'] == 'admin') { ?>
         <a href="../table/manageTable.php" class="w3-bar-item w3-button">จัดการโต๊ะ</a>
     <?php
@@ -79,8 +80,8 @@
     <div class="column">
         <button class="Sidebar" onclick="w3_open()">☰</button>
     </div>
-    <div class="column">
-        <p style="text-align: right;padding: 0px 25px 10px 20px ;font-size : 20px">ชื่อ : <?php echo $_SESSION['username'] ?> ตำแหน่ง :<?php echo $_SESSION['role'] ?></p>
+    <div class="column1">
+        <p1>ชื่อ : <?php echo $_SESSION['username'] ?> ตำแหน่ง :<?php echo $_SESSION['role'] ?></p1>
     </div>
 </div>
 

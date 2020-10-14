@@ -6,6 +6,7 @@ require_once("../require/connectDB.php");
 <html lang="th">
 
 <head>
+    <?php include("../Sidebar/Sidebar2.php"); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการร้านอาหาร</title>
@@ -22,7 +23,6 @@ require_once("../require/connectDB.php");
         include_once("../require/req.php");
     else
         include_once("../require/customReq.php");
-    include("../Sidebar/Sidebar.php");
     ?>
 </head>
 <script>

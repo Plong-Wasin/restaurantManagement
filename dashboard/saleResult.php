@@ -18,7 +18,7 @@ require_once "../require/connectDB.php";
 </head>
 
 <body>
-    <?php include("../Sidebar/Sidebar.php") ?>
+    <?php include("../Sidebar/Sidebar2.php") ?>
     <div class="container">
         <h2 class="text-center">ผลสรุปการขาย</h2>
         วันที่จ่ายเงิน
