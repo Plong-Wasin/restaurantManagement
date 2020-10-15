@@ -26,13 +26,17 @@
             test();
         }, 1000);
     });
+    var oldData;
 
     function test() {
         $.ajax({
             url: './AjexOrder.php',
             method: 'POST',
             success: function(data) {
-                $('#ajax_order').html(data);
+                if (oldData != data) {
+                    $('#ajax_order').html(data);
+                    oldData = data;
+                }
             }
         });
     }

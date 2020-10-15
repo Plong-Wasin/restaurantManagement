@@ -30,8 +30,8 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
             echo "<tr>";
             echo "<td>" . $subRow['food_name'] . "</td>";
             echo "<td>" . $subRow['sumFood_amount'] . "</td>";
-            echo "<td>" . $subRow['food_price'] . "</td>";
-            echo "<td>" . $subRow['sumFood_amount'] * $subRow['food_price'] . "</td>";
+            echo "<td>" . number_format($subRow['food_price']) . "</td>";
+            echo "<td>" . number_format($subRow['sumFood_amount'] * $subRow['food_price']) . "</td>";
         ?>
             <?php echo '</tr>'; ?>
         <?php
@@ -43,7 +43,7 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
             <td>รวม</td>
             <td><?php echo $totalFood_amount ?></td>
             <td>---</td>
-            <td><?php echo $totalPrice ?> บาท</td>
+            <td><?php echo number_format($totalPrice) ?> บาท</td>
         </tr>
 
     </table>
