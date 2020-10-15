@@ -1,4 +1,5 @@
 <?php
+include('../Session/Check_Session.php');
 include("../require/connectDB.php");
 $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
 </head>
@@ -55,6 +56,11 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
     <div id=cal>
     </div>
     <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button>
+
+    <?php
+    $_SESSION['check_in_id'] = $checkInId;
+    ?>
+
     <script>
         function CheckBin(checkInId, tableId, cash) {
             $n = cash;
