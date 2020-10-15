@@ -24,18 +24,23 @@ if (isset($_POST["code"]) || isset($_SESSION["code"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/enterCode.css">
+    <title>enterCode</title>
     <?php
     include_once("../require/req.php");
     ?>
 </head>
 
 <body>
-    <div class="container">
-        <form action="" method="POST">
-            <input type="number" name="code" id="code" required>
-            <button type="submit" class="btn btn-primary">ไปหน้าสั่งอาหาร</button>
-        </form>
+    <div class="box">
+        <div class="container">
+            <form action="" method="POST">
+                <p>
+                    <input type="number" name="code" id="code" class="inputC" required>
+                    <button type="submit" class="btn btn-primary">ไปหน้าสั่งอาหาร</button>
+                </p>
+            </form>
+        </div>
     </div>
 </body>
 

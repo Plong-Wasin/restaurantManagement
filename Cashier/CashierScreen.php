@@ -49,7 +49,6 @@ include("../require/connectDB.php");
             }
         }
     </script>
-
 </body>
 
 </html>

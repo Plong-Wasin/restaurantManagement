@@ -74,6 +74,23 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
                 });
         }
 
+        function PrintBin(checkInId, tableId, cash) {
+            $n = cash;
+            if (confirm("ยืนยัน"))
+                $.ajax({
+                    url: "./Cashier_db/PrintBin.php",
+                    method: "POST",
+                    data: {
+                        data: checkInId,
+                        data1: tableId,
+
+                    },
+                    success: function(data) {
+                        window.open("./Cashier_db/PrintBin.php");
+                    }
+                });
+        }
+
         src = "https://code.jquery.com/jquery-3.5.1.min.js"
 
         function cal(totalPrice) {
