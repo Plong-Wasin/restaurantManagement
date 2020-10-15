@@ -1,6 +1,6 @@
 <?php
 ?>
-<link rel="stylesheet" href="../../CSS/sb2.css">
+<link rel="stylesheet" href="../CSS/sb2.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Sidebar -->
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
