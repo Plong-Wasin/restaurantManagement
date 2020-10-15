@@ -21,7 +21,7 @@ while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                 </tr>
                 <tbody id="tableBody">
                     <?php
-                    $query1 = "SELECT * FROM `order_list` WHERE `order_time_id` = $select ORDER BY `order_list`.`order_time_id` ASC";
+                    $query1 = "SELECT * FROM `order_list` WHERE `order_time_id` = $select AND `food_cook` <=1 ORDER BY `order_list`.`order_time_id` ASC";
                     $result1 = mysqli_query($conn, $query1);
                     while ($re = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
                         if ($re['food_cook'] != 2) {
