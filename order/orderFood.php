@@ -3,7 +3,7 @@ session_start();
 require_once("../require/connectDB.php");
 if (isset($_SESSION["code"])) {
     $code = mysqli_escape_string($conn, $_SESSION['code']);
-    $query = "SELECT table_id FROM `check_in` WHERE `code` = $code ORDER BY check_in_timestamp DESC LIMIT 1";
+    $query = "SELECT table_id FROM `check_in` WHERE `code` = $code AND `paid_timestamp` IS NULL ORDER BY check_in_timestamp DESC LIMIT 1";
     $result = mysqli_query($conn, $query);
     if ($row = mysqli_fetch_array($result)) {
         $tableId = $row['table_id'];

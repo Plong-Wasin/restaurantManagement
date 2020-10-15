@@ -36,7 +36,7 @@ if (isset($_POST["code"]) || isset($_SESSION["code"])) {
         <div class="container">
             <form action="" method="POST">
                 <p>
-                    <input type="number" name="code" id="code" class="inputC" required>
+                    <input type="text" name="code" id="code" class="inputC" maxlength="4" r equired>
                     <button type="submit" class="btn btn-primary">ไปหน้าสั่งอาหาร</button>
                 </p>
             </form>
