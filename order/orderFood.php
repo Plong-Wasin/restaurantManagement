@@ -107,7 +107,7 @@ else
                 });
             }
         });
-
+        callAjaxSelectFoodType();
     })
 
     function logout() {
@@ -370,9 +370,9 @@ else
                 </tr>
             </thead>
             <tbody id="tableFoodList">
-                <?php
-                include("./ajax/selectFoodType.php");
-                ?>
+                <!-- <?php
+                        include("./ajax/selectFoodType.php");
+                        ?> -->
             </tbody>
         </table>
     </div>

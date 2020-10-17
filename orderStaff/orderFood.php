@@ -93,7 +93,7 @@ else
                 });
             }
         });
-
+        callAjaxSelectFoodType();
     })
 
     function logout() {
@@ -357,7 +357,7 @@ else
             </thead>
             <tbody id="tableFoodList">
                 <?php
-                include("./ajax/selectFoodType.php");
+                // include("./ajax/selectFoodType.php");
                 ?>
                 <!-- <?php
                         $food_query = "SELECT * FROM food WHERE food_type_id=" . $firstFoodType . " ORDER BY  food_have DESC, food_name ASC";

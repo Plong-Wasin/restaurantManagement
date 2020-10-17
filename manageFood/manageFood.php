@@ -39,10 +39,12 @@ require_once("../require/connectDB.php");
                 beforeSend: function() {},
                 success: function(data) {
                     $('#insertFoodType_form')[0].reset();
-                    if (data != "")
+                    if (data != "") {
                         alert(data.replace("<br>", "\n"));
-                    $("#insertFoodType").modal("hide");
-                    callAjaxFoodTypeBar();
+                    } else {
+                        $("#insertFoodType").modal("hide");
+                        callAjaxFoodTypeBar();
+                    }
                 }
             });
         });
@@ -151,6 +153,7 @@ require_once("../require/connectDB.php");
         $('#editFoodType').on('shown.bs.modal', function(e) {
             $("#editFoodType_form").trigger("reset");
         });
+        callAjaxSelectFoodType();
     });
 
     function readURL(input) {
@@ -173,8 +176,12 @@ require_once("../require/connectDB.php");
             data: $('#insertFood_form').serialize(),
             beforeSend: function() {},
             success: function(data) {
-                $('#insertFoodType_form')[0].reset();
-                $("#insertFood").modal('hide');
+                if (data != "") {
+                    alart(data);
+                } else {
+                    $('#insertFoodType_form')[0].reset();
+                    $("#insertFood").modal('hide');
+                }
                 callAjaxSelectFoodType();
             }
         });
@@ -311,7 +318,7 @@ require_once("../require/connectDB.php");
             </thead>
             <tbody id="tableFoodList">
                 <?php
-                include_once("./ajax/selectFoodType.php");
+                // include_once("./ajax/selectFoodType.php");
                 ?>
             </tbody>
         </table>
