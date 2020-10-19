@@ -8345,3 +8345,11 @@ a[data-toggle="collapse"] {
   .titleheader{
     text-align: center;
 }
+
+.pointer{
+  cursor: pointer;
+}
+
+#headerpage{
+  text-align: center;
+}

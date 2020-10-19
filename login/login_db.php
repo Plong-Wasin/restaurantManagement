@@ -28,17 +28,7 @@ if (isset($_POST['login_user'])) {
         if (mysqli_num_rows($result) == 1) {
             $_SESSION['username'] = $username;
             $_SESSION['role'] =  $role;
-            if ($_SESSION['role'] == 'admin') {
-                header("location:../Admin/AdminScreenMain.php");
-            } else if ($_SESSION['role'] == 'WelcomeStaff') {
-                header("location: ../WelcomeScreen/WelcomeScreenMain.php");
-            } else if ($_SESSION['role'] == 'ServiceStaff') {
-                header("location: ../ServiceScreen/ServiceScreenMain.php");
-            } else if ($_SESSION['role'] == 'KitchenStaff') {
-                header("location: ../KitchenScreen/KitchenScreenMain.php");
-            } else if ($_SESSION['role'] == 'CashierStaff') {
-                header("location: ../CashierScreen/CashierScreenMain.php");
-            }
+            header("location:../Sidebar/SidebarScreen.php");
         } else {
             array_push($errors, "ชื่อผู้ใช้หรือรหัสผ่านผิด");
             $_SESSION['error'] = "ชื่อผู้ใช้หรือรหัสผ่านผิด";
