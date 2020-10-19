@@ -7,7 +7,6 @@
 
 <body>
 
-    <?php include("../Sidebar/Sidebar.php") ?>
     พนังงานทั่วไปปป
 </body>
 

@@ -9,22 +9,23 @@ Header {
 
 
 table {
+    border-spacing: 1;
     border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
     width: 100%;
-}
-th,
-td {
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  th, td {
+    padding: 8px;
     text-align: left;
-    padding: 15px;
-    border-top-style: solid ;
-    border-bottom-style: solid ;
-    border-width: 2px;
-    border-left-style: solid;
-}
-th {
-    background-color:rgb(221, 221, 221);
-    font-size: 18px;
-}
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color:#f5f5f5;}
 
 .register{
     margin: 10px auto 0px;
@@ -112,4 +113,8 @@ select{
 .h {
     text-align: center;
     font-size: 35px;
+}
+.ImgDelete{
+    width: 20px;
+    height: 27px;
 }

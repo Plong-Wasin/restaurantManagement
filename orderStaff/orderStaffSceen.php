@@ -13,9 +13,6 @@
 </head>
 
 <body>
-    <?php
-    include("../Sidebar/Sidebar.php")
-    ?>
     <select class="mySelect" id="mySelect" onchange="myFunction()">
         <option value=0>
             <div class="optionST">เลือกโต๊ะ</div>

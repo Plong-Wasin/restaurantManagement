@@ -11,9 +11,6 @@ include("../require/connectDB.php");
     <link rel="stylesheet" href="../CSS/Cashier.css">
     <title>CashierScreen</title>
     <?php ?>
-    <?php
-    include("../Sidebar/Sidebar.php")
-    ?>
 </head>
 
 <body>

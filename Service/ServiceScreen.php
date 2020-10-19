@@ -11,7 +11,6 @@
 
 <body>
     <?php
-    include("../Sidebar/Sidebar.php")
     ?>
     <div id="table_status">
         <?php include('./Service_db/AjexService.php') ?>

@@ -6,7 +6,6 @@ require_once("../require/connectDB.php");
 <html lang="th">
 
 <head>
-    <?php include("../Sidebar/Sidebar2.php"); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการร้านอาหาร</title>

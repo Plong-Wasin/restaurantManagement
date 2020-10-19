@@ -7,7 +7,6 @@
 
 <body>
 
-    <?php include("../Sidebar/Sidebar.php") ?>
     พนักงงานต้อนรับ
 </body>
 

@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <?php include("../Sidebar/Sidebar.php") ?>
     <p><iframe src="./Kitchen_db/order.php" width="100%" height=1000></iframe></p>
 
     <script>

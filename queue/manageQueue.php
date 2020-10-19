@@ -23,7 +23,6 @@ $result = mysqli_query($conn, $query);
 <body>
 
     <?php
-    include("../Sidebar/Sidebar2.php");
     include("./modal/modal.php");
     ?>
     <div class="container">

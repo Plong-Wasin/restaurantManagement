@@ -18,11 +18,9 @@ require_once "../require/connectDB.php";
 </head>
 
 <body>
-    <?php include("../Sidebar/Sidebar2.php") ?>
-    <div class="container">
-        <h2 class="text-center">ผลสรุปการขาย</h2>
+    <div class="container" style=" background-color: none;">
         วันที่จ่ายเงิน
-        <span class="custom-control-inline">
+        <span class=" custom-control-inline">
             <label for="formDate">เริ่ม</label>
             <input type="date" id="formDate" onchange="onchangeFormDate();">
         </span>
