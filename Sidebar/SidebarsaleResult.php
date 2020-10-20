@@ -1,7 +1,7 @@
 <?php include("../Session/Check_Session.php") ?>
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../sidebar-05/css/style.css">
+<link rel="stylesheet" href="./css/style.css">
 <div class="wrapper d-flex align-items-stretch">
 	<nav id="sidebar">
 		<div class="custom-menu">
@@ -15,8 +15,8 @@
 			<ul class="list-unstyled components mb-5">
 				<?php
 				if ($_SESSION['role'] == 'admin') { ?>
-					<li class="active">
-						<a href="SidebarAdminScreenMain.php" class="w3-bar-item w3-button"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
+					<li class="active" onclick="document.getElementById('iframe').src='../manageFood/manageFood.php';">
+						<a class="w3-bar-item w3-button"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 					</li>
 				<?php
 				} else if ($_SESSION['role'] == 'WelcomeStaff') { ?>
@@ -138,15 +138,14 @@
 			<br>
 			<h1 style="font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase;">ผลสรุปการขาย</h1>
 			<br>
-			<iframe src="../dashboard/saleResult.php" frameborder="0" style="width: 100% ;height:100%;"></iframe>
+			<iframe id="iframe" src="../dashboard/saleResult.php" frameborder="0" style="width: 100% ;height:100%;"></iframe>
 		</div>
 	</body>
 </div>
 
-<script src="../sidebar-05/js/jquery.min.js"></script>
-<script src="../sidebar-05/js/popper.js"></script>
-<script src="../sidebar-05/js/bootstrap.min.js"></script>
-<script src="../sidebar-05/js/main.js"></script>
-
+<script src="./js/jquery.min.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/main.js"></script>
 
 </html>
