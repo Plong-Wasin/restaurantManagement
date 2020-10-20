@@ -13,6 +13,7 @@
     <?php
     ?>
     <div id="table_status">
+        dsajdjs
         <?php include('./Service_db/AjexService.php') ?>
     </div>
 

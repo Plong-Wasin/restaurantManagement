@@ -19,13 +19,12 @@ require_once "../require/connectDB.php";
 
 <body>
     <div class="container" style=" background-color: none;">
-        วันที่จ่ายเงิน
-        <span class=" custom-control-inline">
-            <label for="formDate">เริ่ม</label>
+        <span class=" custom-control-inline" style="padding: 10px 10px 10px 10px;border-width: thin;border-color: black;margin: 10px;"">
+            <label for=" formDate" style="padding: 15px 5px 5px 0px;">เริ่ม</label>
             <input type="date" id="formDate" onchange="onchangeFormDate();">
         </span>
-        <span class="custom-control-inline">
-            <label for="toDate">ถึง</label>
+        <span class="custom-control-inline" style="padding: 10px 10px 10px 10px;border-width: thin;border-color: black;margin: 10px;"">
+            <label for=" toDate" style="padding: 15px 5px 5px 0px;">ถึง</label>
             <input type="date" id="toDate" onchange="onchangeToDate();">
 
         </span>
