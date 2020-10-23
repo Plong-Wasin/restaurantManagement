@@ -15,8 +15,10 @@ $food_result = mysqli_query($conn, $food_query);
 while ($row = mysqli_fetch_array($food_result)) {
 ?>
     <tr>
-        <td scope="row" class="text-center"><img src="<?php if ($row["food_image"] != null) echo "../src/img/food/" . $row["food_image"];
-                                                        else echo "../src/img/1200px-No_image_available.svg.png" ?>" height="auto" width="auto" style="max-height: 200px;" class="img-thumbnail" /></td>
+        <!-- <td scope="row" class="text-center"><img src="<?php if ($row["food_image"] != null) echo "../src/img/food/" . $row["food_image"];
+                                                            else echo "../src/img/1200px-No_image_available.svg.png" ?>" height="auto" width="auto" style="max-height: 200px;" class="img-thumbnail" /></td> -->
+        <td scope="row" class="text-center"><img id="img_<?php echo $row["food_id"]; ?>" onclick="enlarge('img_<?php echo $row['food_id']; ?>')" src="<?php if ($row["food_image"] != null) echo "../src/img/food/" . $row["food_image"];
+                                                                                                                                                        else echo "../src/img/1200px-No_image_available.svg.png" ?>" height="auto" width="auto" style="max-height: 200px;" class="img-thumbnail" /></td>
         <td><?php echo $row["food_name"] ?></td>
         <td><?php echo number_format($row['food_price']) ?></td>
         <td class="text-center"><?php if ($row["food_have"]) {

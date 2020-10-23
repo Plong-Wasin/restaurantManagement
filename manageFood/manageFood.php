@@ -24,6 +24,8 @@ require_once("../require/connectDB.php");
         include_once("../require/customReq.php");
     ?>
 </head>
+<link rel="stylesheet" href="../CSS/enlarge.css">
+
 <script>
     window.onload = function() {
         $(".nav-item.active").click();
@@ -278,10 +280,20 @@ require_once("../require/connectDB.php");
         });
     }
 </script>
-
 </head>
 
 <body>
+    <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display = 'none';">
+
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
     <div class="container">
         <h2 class="text-center p-2">จัดการเมนูอาหาร</h2>
         <?php
@@ -297,14 +309,11 @@ require_once("../require/connectDB.php");
         <?php
         }
         ?>
-
         <div id="foodTypeBar">
             <?php
             include("./ajax/foodTypeBar.php");
             ?>
         </div>
-
-
         <table class="table">
             <thead>
                 <tr>
@@ -326,5 +335,6 @@ require_once("../require/connectDB.php");
     include_once("./modal/modal.php");
     ?>
 </body>
+<script src="../js/enlarge.js"></script>
 
 </html>
