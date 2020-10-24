@@ -28,11 +28,18 @@ if (isset($_POST["code"]) || isset($_SESSION["code"])) {
     <title>enterCode</title>
     <?php
     include_once("../require/req.php");
+
+    $bd = "../src/img/2.3.jpg";
     ?>
+
+
 </head>
 
-<body>
-    <div class="box">
+<body style="background-image: url('<?php echo $bd ?>');background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; ">
+    <?php echo $bd ?>
+    <div class=" box">
         <div class="container">
             <form action="" method="POST">
                 <p>

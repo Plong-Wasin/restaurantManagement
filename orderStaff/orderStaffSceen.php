@@ -5,15 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Cashier.css">
+
     <title>Document</title>
     <?php
     include("../require/connectDB.php")  ?>
-
+    <link rel="stylesheet" href="../CSS/css/selectOrderFoodStaff.css">
 </head>
 
 <body>
-    <select class="mySelect" id="mySelect" onchange="myFunction()">
+    <select class="selectOrderFoodStaff" id="mySelect" onchange="myFunction()">
         <option value=0>
             <div class="optionST">เลือกโต๊ะ</div>
         </option>
@@ -52,6 +52,7 @@
             }
         }
     </script>
+
 
 </body>
 

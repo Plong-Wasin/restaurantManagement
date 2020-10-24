@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
-<bodys>
+<body>
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar">
 			<div class="custom-menu">
@@ -26,7 +26,7 @@
 				<ul class="list-unstyled components mb-5">
 					<?php
 					if ($_SESSION['role'] == 'admin') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../Admin/AdminScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+						<li class="active" onclick="document.getElementById('iframe').src='../customer/enterCode.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style=" cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>
 					<?php
@@ -95,7 +95,7 @@
 					}
 
 					if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'KitchenStaff') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../Kitchen/KitchenScreen.php';document.getElementById('demo').innerHTML = 'ห้องครัว';">
+						<li class="active" onclick="document.getElementById('iframe').src='../Kitchen/Kitchen_db/order.php';document.getElementById('demo').innerHTML = 'ห้องครัว';">
 							<a style="cursor: pointer;"><span class="fa fa-free-code-camp mr-3"></span>ห้องครัว</a>
 						</li>
 					<?php
@@ -146,16 +146,17 @@
 				หน้าหลัก
 			</div>
 
-			<iframe id="iframe" src="../Admin/AdminScreenMain.php" frameborder="0" style="overflow: hidden;position:fixed;width: 100% ;height:150vh;"></iframe>
+			<iframe id="iframe" src="../Admin/AdminScreenMain.php" style="overflow: hidden; height: 88vh;
+        width: 100%; " frameborder="0"></iframe>
 
 		</div>
-		</body>
-	</div>
+</body>
+</div>
 
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/popper.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/main.js"></script>
-	</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/main.js"></script>
+</body>
 
 </html>

@@ -110,7 +110,7 @@ include('../require/connectDB.php');
                                     <button class="btn btn--radius-2 btn--blue" id="ButtonRegister" type="submit" name="reg_user" class="btn">ยืนยัน</button>
                                 </div>
                             </div>
-
+                            <input type="hidden" id="old_username" name="old_username" value="<?php echo $username ?>">
                         </form>
                     </div>
                 </div>
@@ -140,8 +140,13 @@ include('../require/connectDB.php');
                     method: "POST",
                     data: $('#registerForm').serialize(),
                     success: function(data) {
-                        getStaff();
-                        document.getElementById("registerForm").reset();
+                        if (data = 'error') {
+                            alert("มีชื่อผู้ใช้นี้อยู่แล้ว");
+                            document.getElementById("username").value = '';
+                        } else {
+                            getStaff();
+                            document.getElementById("registerForm").reset();
+                        }
                     }
                 });
             }

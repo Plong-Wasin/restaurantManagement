@@ -3,8 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../CSS/sb.css">
-    <link rel="stylesheet" href="../../CSS/Order.css">
+    <link rel="stylesheet" href="../../CSS/css/tableKitchen.css">
 </head>
 
 <body>

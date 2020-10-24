@@ -1,7 +1,6 @@
 <?php
 require_once('../../require/connectDB.php');
 
-$errors = array();
 
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 $role = mysqli_real_escape_string($conn, $_POST['role']);
@@ -14,8 +13,8 @@ $query11 = mysqli_query($conn, $user_check_query);
 $result11 = mysqli_fetch_assoc($query11);
 
 if ($result11) {
-    if ($result11['username'] === $username) {
-        echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+    if ($result11['username'] == $username) {
+        echo "error";
     }
 } else {
     $password = $password_1;
@@ -25,3 +24,5 @@ if ($result11) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
+echo $result11['username'];
+echo $username;
