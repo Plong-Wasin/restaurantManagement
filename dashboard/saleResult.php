@@ -19,6 +19,22 @@ require_once "../require/connectDB.php";
 
 <body>
     <div class="container" style=" background-color: none;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">ประวัติการขาย</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ภาพรวม</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">อาหารที่ขาย</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <span class=" custom-control-inline" style="padding: 10px 10px 10px 10px;border-width: thin;border-color: black;margin: 10px;"">
             <label for=" formDate" style="padding: 15px 5px 5px 0px;">เริ่ม</label>
             <input type="date" id="formDate" onchange="onchangeFormDate();">
@@ -49,9 +65,8 @@ require_once "../require/connectDB.php";
                 </thead>
                 <tbody id="result">
                     <?php
-                    include_once "./ajax/getTable.php";
+                    include_once "./ajax/getTbody.php";
                     ?>
-
                 </tbody>
             </table>
         </div>
@@ -76,7 +91,11 @@ require_once "../require/connectDB.php";
         today = yyyy + '-' + mm + '-' + dd;
         document.getElementById("toDate").setAttribute("max", today);
         document.getElementById("formDate").setAttribute("max", today);
-
+        $(".nav-item").click(function() {
+            $('.navbar-collapse').collapse('hide');
+            $(".nav-item.active").removeClass("active");
+            $(this).addClass("active");
+        });
     });
 
     function onchangeFormDate() {
@@ -99,7 +118,7 @@ require_once "../require/connectDB.php";
         event.preventDefault();
         if ($(this)[0].id != "option4") {
             $.ajax({
-                url: './ajax/getTable.php',
+                url: './ajax/getTbody.php',
                 method: 'POST',
                 data: {
                     data: $(this)[0].id
@@ -111,7 +130,7 @@ require_once "../require/connectDB.php";
             });
         } else {
             $.ajax({
-                url: './ajax/getTable.php',
+                url: './ajax/getTbody.php',
                 method: 'POST',
                 data: {
                     data: $(this)[0].id,
@@ -124,12 +143,13 @@ require_once "../require/connectDB.php";
                 }
             });
         }
-    })
+
+    });
 
     function findActive(value, index, array) {
         if (value == "active") {
             $.ajax({
-                url: './ajax/getTable.php',
+                url: './ajax/getTbody.php',
                 method: 'POST',
                 data: {
                     data: "option4",
