@@ -261,13 +261,8 @@ else
             });
         }
     }
-
-    function enlarge(id) {
-        document.getElementById("myModal").style.display = "block";
-        document.getElementById("img01").src = document.getElementById(id).src;
-        document.getElementById("caption").innerHTML = document.getElementById(id).alt;
-    }
 </script>
+<script src="../js/enlarge.js"></script>
 <link rel="stylesheet" href="../CSS/plusMinus.css">
 <style>
     .number-cart-icon {
@@ -295,7 +290,7 @@ else
 </head>
 
 <body>
-    <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display = 'none';">
+    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';">
 
         <!-- The Close Button -->
         <span class="close">&times;</span>

@@ -283,7 +283,7 @@ require_once("../require/connectDB.php");
 </head>
 
 <body>
-    <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display = 'none';">
+    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';">
 
         <!-- The Close Button -->
         <span class="close">&times;</span>
