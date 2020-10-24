@@ -39,104 +39,7 @@ if ($len < 170)
 else
     include_once("../require/customReq.php");
 ?>
-<style>
-    /* Style the Image Used to Trigger the Modal */
-    #myImg {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    #myImg:hover {
-        opacity: 0.7;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.9);
-        /* Black w/ opacity */
-    }
-
-    /* Modal Content (Image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-    }
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-    }
-
-    /* Add Animation - Zoom in the Modal */
-    .modal-content,
-    #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-
-    @keyframes zoom {
-        from {
-            transform: scale(0)
-        }
-
-        to {
-            transform: scale(1)
-        }
-    }
-
-    /* The Close Button */
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px) {
-        .modal-content {
-            width: 100%;
-        }
-    }
-</style>
+<link rel="stylesheet" href="../CSS/enlarge.css">
 <script>
     $(document).ready(function() {
         $("#foodAmount").bind('keyup mouseup', goToCalPrice);
@@ -146,9 +49,7 @@ else
                 url: "./ajax/insertOrderFood.php",
                 method: "POST",
                 data: $('#foodOrder_form').serialize() + "&tableId=" + <?php echo $tableId; ?>,
-                beforeSend: function() {
-                    //document.getElementById("insert").innerText = "กำลังประมวลผล";
-                },
+                beforeSend: function() {},
                 success: function(data) {
                     $('#foodOrder_form')[0].reset();
                     $('#modalOrder').modal('hide');
@@ -159,15 +60,12 @@ else
             $("#history").removeClass("active");
             $("#currentCart").addClass("active");
             callAjaxGetData();
-            // callAjaxGetData();
+
         });
         $(".nav-item").click(function() {
             document.getElementById("search").value = '';
             $('.navbar-collapse').collapse('hide');
             $(".nav-item.active").removeClass("active");
-            //console.log($(this)[0].children[0].attributes.value.value);
-
-            //console.log($(this).children(".nav-link").data("value"));
             $(this).addClass("active");
             $.ajax({
                 url: "./ajax/selectFoodType.php",
@@ -370,19 +268,8 @@ else
         document.getElementById("caption").innerHTML = document.getElementById(id).alt;
     }
 </script>
+<link rel="stylesheet" href="../CSS/plusMinus.css">
 <style>
-    .minus,
-    .plus {
-        cursor: pointer;
-
-        border-radius: 4px;
-        padding: 6px 10px 6px 10px;
-        border: 1px solid #ddd;
-
-        vertical-align: middle;
-        text-align: center;
-    }
-
     .number-cart-icon {
         position: relative;
         border-radius: 2.75rem;
@@ -485,9 +372,6 @@ else
                 </tr>
             </thead>
             <tbody id="tableFoodList">
-                <!-- <?php
-                        include("./ajax/selectFoodType.php");
-                        ?> -->
             </tbody>
         </table>
     </div>

@@ -22,21 +22,18 @@ if ($len < 170)
 else
     include_once("../require/customReq.php");
 ?>
+<link rel="stylesheet" href="../CSS/enlarge.css">
 <script>
     $(document).ready(function() {
-        // setTimeout(() => {
-        //     $("#cartIcon").click();
-        // }, 500);
+
         $("#foodAmount").bind('keyup mouseup', goToCalPrice);
         $('#foodOrder_form').on("submit", function(event) {
             event.preventDefault();
             $.ajax({
-                url: "./ajax/insertOrderFood.php",
+                url: "../order/ajax/insertOrderFood.php",
                 method: "POST",
                 data: $('#foodOrder_form').serialize() + "&tableId=" + <?php echo $tableId; ?>,
-                beforeSend: function() {
-                    //document.getElementById("insert").innerText = "กำลังประมวลผล";
-                },
+                beforeSend: function() {},
                 success: function(data) {
                     $('#foodOrder_form')[0].reset();
                     $('#modalOrder').modal('hide');
@@ -47,18 +44,15 @@ else
             $("#history").removeClass("active");
             $("#currentCart").addClass("active");
             callAjaxGetData();
-            // callAjaxGetData();
         });
         $(".nav-item").click(function() {
             document.getElementById("search").value = '';
             $('.navbar-collapse').collapse('hide');
             $(".nav-item.active").removeClass("active");
-            //console.log($(this)[0].children[0].attributes.value.value);
 
-            //console.log($(this).children(".nav-link").data("value"));
             $(this).addClass("active");
             $.ajax({
-                url: "./ajax/selectFoodType.php",
+                url: "../order/ajax/selectFoodType.php",
                 method: "POST",
                 data: {
                     foodTypeId: $(this).children(".nav-link").data("value")
@@ -81,7 +75,7 @@ else
             } else {
                 event.preventDefault();
                 $.ajax({
-                    url: './ajax/searchFood.php',
+                    url: '../order/ajax/searchFood.php',
                     method: 'POST',
                     data: {
                         search: $('#search').val().replaceAll(" ", "")
@@ -102,7 +96,7 @@ else
 
     function callAjaxSelectFoodType() {
         $.ajax({
-            url: "./ajax/selectFoodType.php",
+            url: "../order/ajax/selectFoodType.php",
             method: "POST",
             data: {
                 foodTypeId: $(".nav-item.active").children(".nav-link").data("value")
@@ -115,7 +109,7 @@ else
 
     function callAjaxConfirmOrder() {
         $.ajax({
-            url: "./ajax/confirmOrder.php",
+            url: "../order/ajax/confirmOrder.php",
             method: "POST",
             data: {
                 tableId: <?php echo $tableId ?>
@@ -129,7 +123,7 @@ else
 
     function callAjaxHistoryOrder() {
         $.ajax({
-            url: "./ajax/historyOrder.php",
+            url: "../order/ajax/historyOrder.php",
             method: "POST",
             data: {
                 tableId: <?php echo $tableId; ?>
@@ -143,7 +137,7 @@ else
     function deleteHistoryRecord(order_list_id) {
         if (confirm("แน่ใจที่จะยกเลิกรายการอาหาร")) {
             $.ajax({
-                url: "./ajax/deleteHistoryRecord.php",
+                url: "../order/ajax/deleteHistoryRecord.php",
                 method: "POST",
                 data: {
                     order_list_id: order_list_id
@@ -157,7 +151,7 @@ else
 
     function callAjaxGetData() {
         $.ajax({
-            url: "./ajax/getData.php",
+            url: "../order/ajax/getData.php",
             method: "POST",
             data: {
                 tableId: <?php echo $tableId ?>
@@ -194,7 +188,7 @@ else
         document.getElementById("modalOrderTitle").innerText = "สั่ง " + foodName + "ราคา " + foodPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " ต่อหน่วย";
         event.preventDefault();
         $.ajax({
-            url: './ajax/checkEmpty.php',
+            url: '../order/ajax/checkEmpty.php',
             method: 'POST',
             data: {
                 foodId: foodId
@@ -240,7 +234,7 @@ else
     function deleteOrder(orderId) {
         if (confirm("แน่ใจนะที่จะลบรายการนี้")) {
             $.ajax({
-                url: "./ajax/deleteOrder.php",
+                url: "../order/ajax/deleteOrder.php",
                 method: "POST",
                 data: {
                     data: orderId
@@ -251,20 +245,15 @@ else
             });
         }
     }
-</script>
-<style>
-    .minus,
-    .plus {
-        cursor: pointer;
 
-        border-radius: 4px;
-        padding: 6px 10px 6px 10px;
-        border: 1px solid #ddd;
-
-        vertical-align: middle;
-        text-align: center;
+    function enlarge(id) {
+        document.getElementById("myModal").style.display = "block";
+        document.getElementById("img01").src = document.getElementById(id).src;
+        document.getElementById("caption").innerHTML = document.getElementById(id).alt;
     }
-
+</script>
+<link rel="stylesheet" href="../CSS/plusMinus.css">
+<style>
     .number-cart-icon {
         position: relative;
         border-radius: 2.75rem;
@@ -290,6 +279,16 @@ else
 </head>
 
 <body>
+    <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display = 'none';">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
     <div class="container">
         <div class="text-right">
             <button type="button" class="btn btn-primary" onclick="logout();">เลือกโต๊ะ</button>
@@ -356,41 +355,9 @@ else
                 </tr>
             </thead>
             <tbody id="tableFoodList">
-                <?php
-                // include("./ajax/selectFoodType.php");
-                ?>
-                <!-- <?php
-                        $food_query = "SELECT * FROM food WHERE food_type_id=" . $firstFoodType . " ORDER BY  food_have DESC, food_name ASC";
-                        $food_result = mysqli_query($conn, $food_query);
-                        while ($row = mysqli_fetch_array($food_result)) {
-                        ?>
-                    <tr>
-                        <td scope="row"><img src="../src/img/food/<?php echo $row["food_image"] ?>" height="auto" width="100%" class="img-thumbnail" /></td>
-                        <td><?php echo $row["food_name"] ?></td>
-                        <td><?php echo $row["food_price"] ?></td>
-                        <?php
-                            if ($row["food_have"] == 1) {
-                        ?>
-                            <td><button class="btn btn-primary" val="<?php echo $row["food_id"] ?>" onclick="orderFood('<?php echo $row['food_id'] ?>','<?php echo $row['food_name'] ?>',<?php echo $row['food_price'] ?>);" data-toggle="modal" data-target="#modalOrder">สั่งอาหาร</button></td>
-                        <?php
-                            } else {
-                        ?>
-                            <td><button class="btn btn-secondary" disabled val="<?php echo $row["food_id"] ?>" onclick="orderFood('<?php echo $row['food_id'] ?>','<?php echo $row['food_name'] ?>',<?php echo $row['food_price'] ?>);" data-toggle="modal" data-target="#modalOrder">อาหารหมด</button></td>
-
-                        <?php
-                            }
-                        ?>
-                    </tr>
-                <?php
-                        }
-                ?> -->
             </tbody>
         </table>
     </div>
-    <!-- Button trigger modal
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalOrder">
-        สั่งอาหาร
-    </button> -->
 
     <!-- Modal -->
     <div class="modal fade" id="modalOrder" tabindex="-1" role="dialog" aria-labelledby="modalOrderTitle" aria-hidden="true">
