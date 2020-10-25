@@ -10,7 +10,10 @@ else
     $foodTypeId = $firstFoodType;
 ?>
 <?php
-$food_query = "SELECT * FROM food WHERE food_type_id=" . $foodTypeId . " ORDER BY food_name ASC";
+if ($foodTypeId != 0)
+    $food_query = "SELECT * FROM food WHERE food_type_id=" . $foodTypeId . " ORDER BY food_name ASC";
+else
+    $food_query = "SELECT * FROM food WHERE food_recommend=1 ORDER BY food_name ASC";
 $food_result = mysqli_query($conn, $food_query);
 while ($row = mysqli_fetch_array($food_result)) {
 ?>

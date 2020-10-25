@@ -135,6 +135,12 @@ require_once("../require/connectDB.php");
                 },
                 success: function(data) {
                     $("#tableFoodList").html(data);
+                    //alert($(".nav-item.active").children(".nav-link").data("value"));
+                    if ($(".nav-item.active").children(".nav-link").data("value") == 0) {
+                        document.getElementById("divEditRecommend").style.display = "block";
+                    } else
+                        document.getElementById("divEditRecommend").style.display = "none";
+
                 }
             });
         });
@@ -242,9 +248,7 @@ require_once("../require/connectDB.php");
                     data: food_id
                 },
                 success: function(data) {
-
                     callAjaxSelectFoodType();
-
                 }
             });
         }
@@ -314,6 +318,9 @@ require_once("../require/connectDB.php");
             include("./ajax/foodTypeBar.php");
             ?>
         </div>
+        <div class="text-right py-2" style="display: none;" id="divEditRecommend">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='./recommendFood/manageRecommendFood.php'">แก้ไขเมนูแนะนำ</button>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -326,7 +333,6 @@ require_once("../require/connectDB.php");
             </thead>
             <tbody id="tableFoodList">
                 <?php
-                // include_once("./ajax/selectFoodType.php");
                 ?>
             </tbody>
         </table>
@@ -336,5 +342,6 @@ require_once("../require/connectDB.php");
     ?>
 </body>
 <script src="../js/enlarge.js"></script>
+
 
 </html>
