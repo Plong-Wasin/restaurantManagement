@@ -8,8 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <?php
-    include("../../require/req.php");
+    $tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
+    $tab_result = mysqli_query($conn, $tab_query);
+    $tab_menu = '';
+    $tab_content = '';
+    $len = 0;
+    while ($row = mysqli_fetch_array($tab_result)) {
+        $len = $len + strlen($row["food_type_name"]);
+    }
+    if ($len < 190)
+        include("../../require/req.php");
+    else {
     ?>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="../../CSS/customBootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <?php
+    }
+    ?>
+
 </head>
 
 <body>
