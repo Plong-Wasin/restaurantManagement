@@ -55,7 +55,7 @@ require_once "../require/connectDB.php";
         <div>
             <div class="text-right">ยอดขายรวม <span id="total"> </span> บาท</div>
             <table class="table">
-                <thead>
+                <thead id="thead">
                     <tr>
                         <th>ลำดับ</th>
                         <th>วันเวลาที่เข้า</th>
@@ -95,6 +95,18 @@ require_once "../require/connectDB.php";
             $('.navbar-collapse').collapse('hide');
             $(".nav-item.active").removeClass("active");
             $(this).addClass("active");
+            $.ajax({
+                url: './ajax/getThead.php',
+                method: 'POST',
+                data: {
+                    topic: $(".nav-item.active")[0].innerText
+                },
+                beforeSend: function() {},
+                success: function(data) {
+                    $("#thead").html(data);
+                }
+            });
+            callAjaxGetTbody($(".btn.active").children())
         });
     });
 
@@ -115,13 +127,17 @@ require_once "../require/connectDB.php";
         document.getElementById("filterButton").classList.forEach(findActive);
     })
     $(":radio").click(function() {
-        event.preventDefault();
-        if ($(this)[0].id != "option4") {
+        callAjaxGetTbody(this);
+    });
+
+    function callAjaxGetTbody(click) {
+        if ($(click)[0].id != "option4") {
             $.ajax({
                 url: './ajax/getTbody.php',
                 method: 'POST',
                 data: {
-                    data: $(this)[0].id
+                    data: $(click)[0].id,
+                    topic: $(".nav-item.active")[0].innerText
                 },
                 beforeSend: function() {},
                 success: function(data) {
@@ -133,9 +149,10 @@ require_once "../require/connectDB.php";
                 url: './ajax/getTbody.php',
                 method: 'POST',
                 data: {
-                    data: $(this)[0].id,
+                    data: $(click)[0].id,
                     form: document.getElementById("formDate").value,
-                    to: document.getElementById("toDate").value
+                    to: document.getElementById("toDate").value,
+                    topic: $(".nav-item.active")[0].innerText
                 },
                 beforeSend: function() {},
                 success: function(data) {
@@ -144,7 +161,7 @@ require_once "../require/connectDB.php";
             });
         }
 
-    });
+    }
 
     function findActive(value, index, array) {
         if (value == "active") {
