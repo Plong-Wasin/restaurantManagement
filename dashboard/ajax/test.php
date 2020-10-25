@@ -39,8 +39,8 @@ require_once("../../require/connectDB.php");
                             <td class="text-right"><?php echo number_format($row["total_price"]) ?></td>
                         </tr>
                         <tr style="" class="subTable<?php echo $i ?> table-secondary">
-                            <th>วัน/เดือน/ปี</th>
-                            <th class="text-right" colspan="2">จำนวน</th>
+                            <th colspan="2">วัน/เดือน/ปี</th>
+                            <th class="text-right">จำนวน</th>
                             <th class="text-right">ราคารวม(บาท)</th>
                         </tr>
                         <?php
@@ -54,9 +54,9 @@ require_once("../../require/connectDB.php");
                                     <?php //$date = $subRow['paidDate']; 
                                     $date = date_create($subRow["paidDate"]);
                                     ?>
-                                    <td scope="row"><?php echo date_format($date, "d/m/Y"); //echo date_format($subRow["paidDate"], "Y/m/d H:i:s");
-                                                    ?></td>
-                                    <td class="text-right" colspan="2"><?php echo $subRow['food_amount'] ?></td>
+                                    <td scope="row" colspan="2"><?php echo date_format($date, "d/m/Y"); //echo date_format($subRow["paidDate"], "Y/m/d H:i:s");
+                                                                ?></td>
+                                    <td class="text-right"><?php echo $subRow['food_amount'] ?></td>
                                     <td class="text-right"><?php echo number_format($subRow['total_price']) ?></td>
                                 </tr>
                 <?php }

@@ -32,8 +32,8 @@ if (mysqli_num_rows($result) > 0) {
 ?>
         <tr onclick="showHideSubTable(<?php echo $i ?>)" style="cursor: pointer;">
             <td scope="row"><?php echo $i ?></td>
-            <td><?php echo $row['check_in_timestamp'] ?></td>
-            <td><?php echo $row['paid_timestamp'] ?></td>
+            <td><?php echo date_format(date_create($row['check_in_timestamp']), "d/m/Y H:i:s"); ?></td>
+            <td><?php echo date_format(date_create($row['paid_timestamp']), "d/m/Y H:i:s"); ?></td>
             <td class="text-right"><?php echo number_format($row['total']) ?></td>
         </tr>
         <tr style="display: none;" class="subTable<?php echo $i ?> table-secondary">
@@ -57,13 +57,6 @@ if (mysqli_num_rows($result) > 0) {
                 </tr>
         <?php }
         } ?>
-
-        <tr onclick="showHideSubTable(<?php echo $i ?>)" style="display: none;">
-            <td scope="row"><?php echo $i ?></td>
-            <td><?php echo $row['check_in_timestamp'] ?></td>
-            <td><?php echo $row['paid_timestamp'] ?></td>
-            <td><?php echo number_format($row['total']) ?></td>
-        </tr>
     <?php
         $i++;
     }
