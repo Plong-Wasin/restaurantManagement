@@ -332,8 +332,6 @@ require_once("../require/connectDB.php");
                 </tr>
             </thead>
             <tbody id="tableFoodList">
-                <?php
-                ?>
             </tbody>
         </table>
     </div>

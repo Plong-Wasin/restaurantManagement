@@ -1,3 +1,6 @@
+<?php
+require_once("../../require/connectDB.php");
+?>
 <!doctype html>
 <html lang="en">
 
