@@ -76,11 +76,11 @@ if ($_POST["topic"] == "ภาพรวม") {
         $formDate = $_POST["form"];
         $toDate = $_POST["to"];
         if ($formDate != "" && $toDate != "") {
-            $sql .= "DATE(check_in.paid_timestamp) BETWEEN '$formDate' AND '$toDate' order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
+            $sql .= "DATE(check_in.paid_timestamp) BETWEEN '$formDate' AND '$toDate' GROUP BY order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
         } elseif ($formDate != "") {
-            $sql .= "DATE(check_in.paid_timestamp) >= '$formDate' order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
+            $sql .= "DATE(check_in.paid_timestamp) >= '$formDate' GROUP BY order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
         } elseif ($toDate != "")
-            $sql .= "DATE(check_in.paid_timestamp) <= '$toDate' order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
+            $sql .= "DATE(check_in.paid_timestamp) <= '$toDate' GROUP BY order_list.food_name,order_list.food_price ORDER BY order_list.food_name";
     }
     $result = mysqli_query($conn, $sql);
     $total = 0;
