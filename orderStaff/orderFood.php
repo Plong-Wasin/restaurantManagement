@@ -291,7 +291,7 @@ else
         <h2 class="text-center py-3">สั่งอาหารโต๊ะ <?php echo $tableId; ?></h2>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar <?php if ($len < 170) echo "navbar-expand-lg"; ?> navbar-light bg-light">
             <a class="navbar-brand" href="#">หมวดหมู่</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -183,13 +183,13 @@ require_once("../require/connectDB.php");
             data: $('#insertFood_form').serialize(),
             beforeSend: function() {},
             success: function(data) {
-                if (data != "") {
-                    alart(data);
+                if (data == "error") {
+                    alert("มีชื่อนี้อยู่แล้ว");
                 } else {
                     $('#insertFoodType_form')[0].reset();
                     $("#insertFood").modal('hide');
+                    callAjaxSelectFoodType();
                 }
-                callAjaxSelectFoodType();
             }
         });
     }

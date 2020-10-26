@@ -1,7 +1,15 @@
 <?php
 require_once(__DIR__ . "/../../require/connectDB.php");
+$tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
+$tab_result = mysqli_query($conn, $tab_query);
+$tab_menu = '';
+$tab_content = '';
+$len = 0;
+while ($row = mysqli_fetch_array($tab_result)) {
+    $len = $len + strlen($row["food_type_name"]);
+}
 ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar <?php if ($len < 170) echo "navbar-expand-lg"; ?> navbar-light bg-light">
     <a class="navbar-brand" href="#">หมวดหมู่</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

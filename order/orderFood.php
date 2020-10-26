@@ -34,10 +34,7 @@ $len = 0;
 while ($row = mysqli_fetch_array($tab_result)) {
     $len = $len + strlen($row["food_type_name"]);
 }
-if ($len < 170)
-    include_once("../require/req.php");
-else
-    include_once("../require/customReq.php");
+include_once("../require/req.php");
 ?>
 <link rel="stylesheet" href="../CSS/enlarge.css">
 <script>
@@ -308,7 +305,7 @@ else
         <h2 class="text-center py-3">สั่งอาหารโต๊ะ <?php echo $tableId; ?></h2>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar <?php if ($len < 190) echo "navbar-expand-lg"; ?> navbar-light bg-light">
             <a class="navbar-brand" href="#">หมวดหมู่</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
