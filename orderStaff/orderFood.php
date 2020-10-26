@@ -9,6 +9,7 @@ if ($tableId == null)
     //header("Location:../customer/enterCode.php");
 ?>
 <?php
+include_once("../require/req.php");
 $tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
 $tab_result = mysqli_query($conn, $tab_query);
 $tab_menu = '';
@@ -17,10 +18,6 @@ $len = 0;
 while ($row = mysqli_fetch_array($tab_result)) {
     $len = $len + strlen($row["food_type_name"]);
 }
-if ($len < 170)
-    include_once("../require/req.php");
-else
-    include_once("../require/customReq.php");
 ?>
 <link rel="stylesheet" href="../CSS/enlarge.css">
 <script>
@@ -289,16 +286,11 @@ else
             <button type="button" class="btn btn-primary" onclick="logout();">เลือกโต๊ะ</button>
         </div>
         <h2 class="text-center py-3">สั่งอาหารโต๊ะ <?php echo $tableId; ?></h2>
-
-
         <nav class="navbar <?php if ($len < 170) echo "navbar-expand-lg"; ?> navbar-light bg-light">
             <a class="navbar-brand" href="#">หมวดหมู่</a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <?php

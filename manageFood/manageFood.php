@@ -10,6 +10,7 @@ require_once("../require/connectDB.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบจัดการร้านอาหาร</title>
     <?php
+    include_once("../require/req.php");
     $tab_query = "SELECT food_type_name FROM food_type ORDER BY food_type_id ASC";
     $tab_result = mysqli_query($conn, $tab_query);
     $tab_menu = '';
@@ -18,10 +19,6 @@ require_once("../require/connectDB.php");
     while ($row = mysqli_fetch_array($tab_result)) {
         $len = $len + strlen($row["food_type_name"]);
     }
-    if ($len < 190)
-        include_once("../require/req.php");
-    else
-        include_once("../require/customReq.php");
     ?>
 </head>
 <link rel="stylesheet" href="../CSS/enlarge.css">
@@ -183,12 +180,13 @@ require_once("../require/connectDB.php");
             data: $('#insertFood_form').serialize(),
             beforeSend: function() {},
             success: function(data) {
-                if (data == "error") {
+                if (data != "") {
                     alert("มีชื่อนี้อยู่แล้ว");
                 } else {
                     $('#insertFoodType_form')[0].reset();
                     $("#insertFood").modal('hide');
                     callAjaxSelectFoodType();
+                    console.log("|" + data + "|");
                 }
             }
         });

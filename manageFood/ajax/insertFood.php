@@ -11,7 +11,7 @@ $type = mysqli_real_escape_string($conn, $_POST["foodType"]);
 $sql = "SELECT food_id FROM food WHERE food_name='$name'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
-    echo 'error';
+    echo 'มีชื่อนี้อยู่แล้ว';
 } else {
     if (isset($_POST['imageName'])) {
         $imageName = mysqli_real_escape_string($conn, $_POST["imageName"]);
@@ -52,16 +52,7 @@ if (mysqli_num_rows($result) > 0) {
         ";
         }
     }
-    if (mysqli_query($conn, $query)) {
-        // echo $query;
-        // echo "New record created successfully";
-?>
-    
-    <?php
-    } else {
-    ?>
-    
-    <?php
+    if (!mysqli_query($conn, $query)) {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
 }
