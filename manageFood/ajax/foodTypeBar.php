@@ -12,7 +12,7 @@ require_once(__DIR__ . "/../../require/connectDB.php");
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <?php
-            $sql = "SELECT * FROM setting WHERE setting='recommend'";
+            $sql = "SELECT * FROM setting WHERE name='recommend'";
             $result = mysqli_query($conn, $sql);
             $recommend = 0;
             if (mysqli_num_rows($result) > 0) {
