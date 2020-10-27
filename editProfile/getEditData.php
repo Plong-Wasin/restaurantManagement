@@ -119,3 +119,12 @@ if (isset($_POST['username'])) {
     }
     $_SESSION['username'] = $username;
 }
+echo '<script>alert("แก้ไขเรียบร้อยแล้ว")</script>';
+// header("location:./AdminScreenMain.php");    
+?> <script>
+    window.onload = function() {
+        setTimeout(() => {
+            window.top.location.reload();
+        }, 100);
+    }
+</script>

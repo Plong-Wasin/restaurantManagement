@@ -34,10 +34,11 @@ if ($_POST["topic"] == "ภาพรวม") {
             $total = $total + $row['total'];
 ?>
             <tr onclick="showHideSubTable(<?php echo $i ?>)" style="cursor: pointer;">
-                <td scope="row"><?php echo $i ?></td>
-                <td><?php echo date_format(date_create($row['check_in_timestamp']), "d/m/Y H:i:s"); ?></td>
+                <!-- <td scope="row"><?php echo $i ?></td> -->
+                <td scope="row"><?php echo date_format(date_create($row['check_in_timestamp']), "d/m/Y H:i:s"); ?></td>
                 <td><?php echo date_format(date_create($row['paid_timestamp']), "d/m/Y H:i:s"); ?></td>
                 <td class="text-right"><?php echo number_format($row['total']) ?></td>
+                <td class="text-right"><button type="button" class="btn btn-primary" onclick='window.open("../../Cashier/Cashier.db copy.php?checkInId=<?php echo $row["check_in_id"]; ?>","_blank");'>ปริ้นใบเสร็จ</button></td>
             </tr>
             <tr style="display: none;" class="subTable<?php echo $i ?> table-secondary">
                 <th>รายการอาหารที่สั่ง</th>

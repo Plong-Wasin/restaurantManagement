@@ -9,6 +9,7 @@ $sql = "SELECT food_type_id FROM food_type WHERE food_type_name='$name'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     echo "มีชื่อนี้อยู่แล้ว";
+    exit();
 } else {
     $query = "
     INSERT INTO food_type(food_type_name)  

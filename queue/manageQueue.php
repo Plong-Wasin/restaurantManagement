@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $query);
     include("./modal/modal.php");
     ?>
     <div class="container">
-        <h2 class="text-center m-1">จัดการคิว</h2>
+        <!-- <h2 class="text-center m-1">จัดการคิว</h2> -->
         <nav class="nav nav-pills nav-justified m-1">
             <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(1);">ลบคิวทั้งหมด</button>
             <button type="button" class="btn btn btn-danger  nav-link m-1" onclick="deleteQueue(2);">ลบคิวที่เข้าร้านแล้วทั้งหมด</button>

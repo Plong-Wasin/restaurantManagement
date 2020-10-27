@@ -316,7 +316,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
                     }
                     ?>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" onsubmit="return false">
                     <input class="form-control  mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
                 </form>
             </div>

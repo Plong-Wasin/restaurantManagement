@@ -1,75 +1,90 @@
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
-
 @font-face {
     font-family: OpenSans-Regular;
-    src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
-  }
-  
-  
-  
-  /*//////////////////////////////////////////////////////////////////
+    src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
+}
+
+
+/*//////////////////////////////////////////////////////////////////
   [ RESTYLE TAG ]*/
-  * {
-      margin: 0px; 
-      padding: 0px; 
-      box-sizing: border-box;
-  }
-  
-  body, html {
-      height: 100%;
-      font-family: sans-serif;
-  }
-  
-  /* ------------------------------------ */
-  a {
-      margin: 0px;
-      transition: all 0.4s;
-      -webkit-transition: all 0.4s;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    font-family: sans-serif;
+}
+
+
+/* ------------------------------------ */
+
+a {
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
-  }
-  
-  a:focus {
-      outline: none !important;
-  }
-  
-  a:hover {
-      text-decoration: none;
-  }
-  
-  /* ------------------------------------ */
-  h1,h2,h3,h4,h5,h6 {margin: 0px;}
-  
-  p {margin: 0px;}
-  
-  ul, li {
-      margin: 0px;
-      list-style-type: none;
-  }
-  
-  
-  /* ------------------------------------ */
-  input {
-    display: block;
-      outline: none;
-      border: none !important;
-  }
-  
-  textarea {
+}
+
+a:focus {
+    outline: none !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/* ------------------------------------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+}
+
+p {
+    margin: 0px;
+}
+
+ul,
+li {
+    margin: 0px;
+    list-style-type: none;
+}
+
+
+/* ------------------------------------ */
+
+input {
     display: block;
     outline: none;
-  }
-  
-  textarea:focus, input:focus {
+    border: none !important;
+}
+
+textarea {
+    display: block;
+    outline: none;
+}
+
+textarea:focus,
+input:focus {
     border-color: transparent !important;
-  }
-  
-  button {
-    background-color: #4CAF50; /* Green */
+}
+
+button {
+    background-color: #4CAF50;
+    /* Green */
     border: none;
     color: white;
     padding: 10px 10px;
@@ -77,34 +92,28 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-  }
-  iframe {
-      border: none !important;
-  }
-  
-  
-  
-  
-  /*//////////////////////////////////////////////////////////////////
+}
+
+iframe {
+    border: none !important;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
   [ Utiliti ]*/
-  
-  
-  
-  
-  
-  
-  /*//////////////////////////////////////////////////////////////////
+
+
+/*//////////////////////////////////////////////////////////////////
   [ Table ]*/
-  
-  .limiter {
+
+.limiter {
     width: 100%;
     margin: 0 auto;
-  }
-  
-  .container-table100 {
+}
+
+.container-table100 {
     width: 100%;
     min-height: 10vh;
     display: -webkit-box;
@@ -116,15 +125,15 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 33px 30px;
-  }
-  
-  .wrap-table100 {
+}
+
+.wrap-table100 {
     width: 1170px;
     background-color: darkgrey;
     border-radius: 10px;
-  }
-  
-  table {
+}
+
+table {
     border-spacing: 1;
     border-collapse: collapse;
     background: white;
@@ -132,94 +141,107 @@
     width: 100%;
     margin: 0 auto;
     position: relative;
-  }
-  table * {
+}
+
+table * {
     position: relative;
-  }
-  table td, table th {
+}
+
+table td,
+table th {
     padding-left: 8px;
-  }
-  table thead tr {
+}
+
+table thead tr {
     height: 60px;
     background: gray;
-  }
-  table tbody tr {
+}
+
+table tbody tr {
     height: 50px;
-  }
-  table tbody tr:last-child {
+}
+
+table tbody tr:last-child {
     border: 0;
-  }
-  table td, table th {
+}
+
+table td,
+table th {
     text-align: left;
-  }
-  table td.l, table th.l {
+}
+
+table td.l,
+table th.l {
     text-align: right;
-  }
-  table td.c, table th.c {
+}
+
+table td.c,
+table th.c {
     text-align: center;
-  }
-  table td.r, table th.r {
+}
+
+table td.r,
+table th.r {
     text-align: center;
-  }
-  
-  
-  .table100-head th{
+}
+
+.table100-head th {
     font-family: OpenSans-Regular;
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
     font-weight: unset;
-  }
-  
-  tbody tr:nth-child(even) {
+}
+
+tbody tr:nth-child(even) {
     background-color: #f5f5f5;
-  }
-  
-  tbody tr {
+}
+
+tbody tr {
     font-family: OpenSans-Regular;
     font-size: 15px;
     color: #808080;
     line-height: 1.2;
     font-weight: unset;
-  }
-  
-  tbody tr:hover {
+}
+
+tbody tr:hover {
     color: #555555;
     background-color: #f5f5f5;
     cursor: pointer;
-  }
-  
-  .column1 {
+}
+
+.column1 {
     width: 260px;
     padding-left: 40px;
-  }
-  
-  .column2 {
+}
+
+.column2 {
     width: 160px;
-  }
-  
-  .column3 {
+}
+
+.column3 {
     width: 245px;
-  }
-  
-  .column4 {
+}
+
+.column4 {
     width: 110px;
     text-align: right;
-  }
-  
-  .column5 {
+}
+
+.column5 {
     width: 170px;
     text-align: right;
-  }
-  
-  .column6 {
+}
+
+.column6 {
     width: 222px;
     text-align: right;
     padding-right: 62px;
-  }
-  
-  
-  /* @media screen and (max-width: 992px) {
+}
+
+
+/* @media screen and (max-width: 992px) {
     table {
       display: block;
     }

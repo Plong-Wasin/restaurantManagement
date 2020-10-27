@@ -29,26 +29,55 @@ if (isset($_POST["code"]) || isset($_SESSION["code"])) {
     <?php
     include_once("../require/req.php");
 
-    $bd = "../src/img/2.3.jpg";
+
     ?>
 
 
 </head>
 
-<body style="background-image: url('<?php echo $bd ?>');background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; ">
-    <?php echo $bd ?>
-    <div class=" box">
-        <div class="container">
-            <form action="" method="POST">
-                <p>
-                    <input type="text" name="code" id="code" class="inputC" maxlength="4" r equired>
-                    <button type="submit" class="btn btn-primary">ไปหน้าสั่งอาหาร</button>
-                </p>
-            </form>
-        </div>
+<body>
+    <?php
+    $sql = "SELECT value FROM setting WHERE name='background'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_array($result)) {
+            $logo = $row["value"];
+        }
+    }
+    $sql = "SELECT value FROM setting WHERE name='restaurant_name'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_array($result)) {
+            $name = $row["value"];
+        }
+    }
+    ?>
+
+    <div class=" box" style="text-align: center;">
+        <form action="" method="POST" style="border-style: solid;border-radius: 70px;border-width: 10px;">
+            <p>
+
+                <img src="../src/img/<?php echo $logo ?>" width="200px" height="200px">
+                <h1>ยินดีต้อนรับเข้าสู่ร้าน "<?php echo $name; ?>"</h1>
+                <input type="number" name="code" id="code" class="inputC" maxlength="4" onkeyup="cut()" required>
+                <button type="submit" class="btn btn-primary" style="
+    height: 37px;
+    margin-bottom: 2px;
+    text-align: center;
+    padding-top: 2px;
+"><img src="../src/img/send.png" width="20px" height="20px"></button>
+            </p>
+        </form>
     </div>
+    <script>
+        function cut() {
+            if (document.getElementById("code").value.length > 4) {
+                document.getElementById("code").value = document.getElementById("code").value.substring(0, 4);
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -16,10 +16,10 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
-        session_destroy();
+        // session_destroy();
         session_unset();
         session_start();
-        $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password' ";
+        $query = "SELECT * FROM users WHERE username = '$username' AND BINARY password = '$password' ";
         $result = mysqli_query($conn, $query);
         while ($re = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $role  = $re['role'];
@@ -30,13 +30,19 @@ if (isset($_POST['login_user'])) {
             $_SESSION['role'] =  $role;
             header("location:../Sidebar/SidebarScreen.php");
         } else {
-            array_push($errors, "ชื่อผู้ใช้หรือรหัสผ่านผิด");
-            $_SESSION['error'] = "ชื่อผู้ใช้หรือรหัสผ่านผิด";
-            header("location: login.php");
-        }
-    } else {
-        array_push($errors, "ต้องระบุชื่อผู้ใช้และรหัสผ่าน");
-        $_SESSION['error'] = "ต้องระบุชื่อผู้ใช้และรหัสผ่าน";
-        header("location: login.php");
-    }
-}
+            echo '<script>alert("ชื่อผู้ใช้หรือรหัสผิดพลาด")</script>'; ?>
+            <script>
+                window.onload = function() {
+                    setTimeout(() => {
+                        window.location.href = "./login.php";
+                    }, 100);
+                }
+            </script> <?php
+                    }
+                    // } else {
+                    //     array_push($errors, "ต้องระบุชื่อผู้ใช้และรหัสผ่าน");
+                    //     $_SESSION['error'] = "ต้องระบุชื่อผู้ใช้และรหัสผ่าน";
+                    //     header("location: login.php");
+                    // }
+                }
+            }

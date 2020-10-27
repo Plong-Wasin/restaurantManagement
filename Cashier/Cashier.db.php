@@ -1,7 +1,7 @@
 <?php
 include('../Session/Check_Session.php');
 include("../require/connectDB.php");
-$orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
+$table = mysqli_real_escape_string($conn, $_POST["data"]); ?>
 </head>
 
 <body>
@@ -27,7 +27,7 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
                             </thead>
                             <tbody id="tableBody">
                                 <?php
-                                $checkIn = "SELECT * FROM `check_in` WHERE table_id = $orderid and paid_timestamp is NULL ";
+                                $checkIn = "SELECT * FROM `check_in` WHERE table_id = $table and paid_timestamp is NULL ";
                                 $check = mysqli_query($conn, $checkIn);
                                 while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
                                     $checkInId = $record['check_in_id'];
@@ -84,13 +84,8 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
             </div>
         </div>
     </div>
-
-
-
-
-
-
     <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button>
+    <button class="printBin" onclick="window.open('./Cashier.db copy.php?checkInId=<?php echo $checkInId; ?>', '_blank');">ปลิ้นใบเสร็จ</button>
 
     <?php
     $_SESSION['check_in_id'] = $checkInId;
@@ -115,22 +110,22 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
                 });
         }
 
-        function PrintBin(checkInId, tableId, cash) {
-            $n = cash;
-            if (confirm("ยืนยัน"))
-                $.ajax({
-                    url: "./Cashier_db/PrintBin.php",
-                    method: "POST",
-                    data: {
-                        data: checkInId,
-                        data1: tableId,
+        // function PrintBin(checkInId, tableId, cash) {
+        //     $n = cash;
+        //     if (confirm("ยืนยัน"))
+        //         $.ajax({
+        //             url: "./Cashier_db/PrintBin.php",
+        //             method: "POST",
+        //             data: {
+        //                 data: checkInId,
+        //                 data1: tableId,
 
-                    },
-                    success: function(data) {
-                        window.open("./Cashier_db/PrintBin.php");
-                    }
-                });
-        }
+        //             },
+        //             success: function(data) {
+        //                 window.open("./Cashier_db/PrintBin.php");
+        //             }
+        //         });
+        // }
 
         src = "https://code.jquery.com/jquery-3.5.1.min.js"
 

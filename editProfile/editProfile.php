@@ -32,7 +32,7 @@
         // output data of each row
         while ($row = $result->fetch_assoc()) {
             $username = $row['username'];
-            echo $password = $row['password'];
+            $password = $row['password'];
             $email = $row['Email'];
             $first_name = $row['first_name'];
             $last_name = $row['last_name'];
@@ -43,7 +43,6 @@
                 $setDate = date_create("$Date");
                 $birthdate = date_format($setDate, "d/m/Y");
             }
-            $gender = $row['gender'];
             $contact_number = $row['contact_number'];
             $title = $row['title'];
             $iduser = $row['id'];
@@ -97,20 +96,20 @@
                                         <option disabled="disabled" value="">เลือก</option>
                                     <?php   } ?>
 
-                                    <?php if ($title == 'นางสาว') { ?>
+                                    <?php if ($title == 'Miss') { ?>
                                         <option selected="selected" value="Miss">นางสาว</option>
                                     <?php  } else { ?>
                                         <option value="Miss">นางสาว</option>
                                     <?php   } ?>
-                                    <?php if ($title == 'นาง') { ?>
+                                    <?php if ($title == 'Mrs') { ?>
                                         <option selected="selected" value="Mrs">นาง</option>
                                     <?php  } else { ?>
-                                        <option value="Miss">นาง</option>
+                                        <option value="Mrs">นาง</option>
                                     <?php   } ?>
-                                    <?php if ($title == 'นาย') { ?>
+                                    <?php if ($title == 'Mr') { ?>
                                         <option selected="selected" value="Mr">นาย</option>
                                     <?php  } else { ?>
-                                        <option value="Miss">นาย</option>
+                                        <option value="Mr">นาย</option>
                                     <?php   } ?>
                                 </select>
                                 <div class="select-dropdown"></div>
@@ -149,7 +148,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">เบอร์โทรติดต่อ</label>
-                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value=' <?php echo $contact_number ?>' onkeyup="limit(this);">
+                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value='<?php echo $contact_number ?>' onkeyup="limit(this);">
                                 </div>
                             </div>
                         </div>
@@ -168,7 +167,6 @@
                         <input type="hidden" id="old_username" name="old_username" value="<?php echo $username ?>">
                         <input type="hidden" id="old_password" name="old_password" value="<?php echo $password ?>">
                         <input type="hidden" id="old_email" name="old_email" value="<?php echo $email ?>">
-                        <a href="../manageFood/manageFood.php">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a>
                     </form>
                 </div>
             </div>
@@ -210,14 +208,11 @@
                 alert("ชื่อผู้ใช้ต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
                 document.getElementById("password").value = '';
 
-            } else if (document.getElementById("password").value.length < 6 || document.getElementById("password").value.length > 10) {
-                alert("รหัสผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
-                document.getElementById("password").value = '';
-
-            } else if (document.getElementById("newPassword_1").value.length < 6 || document.getElementById("newPassword_1").value.length > 10) {
-                alert("รหัสผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
-                document.getElementById("password").value = '';
-
+            } else if (document.getElementById("newPassword_1").value != '') {
+                if (document.getElementById("newPassword_1").value.length < 6 || document.getElementById("newPassword_1").value.length > 10) {
+                    alert("รหัสใหม่ผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
+                    document.getElementById("password").value = '';
+                }
             } else {
                 $.ajax({
                     url: "./getEditData.php",
@@ -230,7 +225,14 @@
                             alert("อีเมลล์นี้ถูกใช้แล้ว");
                         } else if (data === 'error_date') {
                             alert("อายุขั้นต่ำ 15 ปี");
+                        } else {
+                            alert("แก้ไขข้อมูลเรียบร้อยแล้ว");
+                            setTimeout(() => {
+                                window.top.location.reload();
+                            }, 500);
+
                         }
+
                     }
                 });
 

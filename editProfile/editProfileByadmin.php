@@ -25,8 +25,8 @@
 <body>
     <?php
     include("../require/connectDB.php");
-    $session = $_SESSION['username'];
-    $query = "SELECT * FROM `users` WHERE username = '$session'";
+    $session = $_GET['id'];
+    $query = "SELECT * FROM `users` WHERE id = '$session'";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -67,7 +67,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">รหัสผ่านเก่า</label>
-                                <input class="input--style-4" type="text" name="password" id="password" required>
+                                <input class="input--style-4" type="text" name="password" id="password" value='<?php echo $password ?>' required>
                             </div>
                         </div>
                         <div class="row row-space">
@@ -96,20 +96,20 @@
                                         <option disabled="disabled" value="">เลือก</option>
                                     <?php   } ?>
 
-                                    <?php if ($title == 'นางสาว') { ?>
+                                    <?php if ($title == 'Miss') { ?>
                                         <option selected="selected" value="Miss">นางสาว</option>
                                     <?php  } else { ?>
                                         <option value="Miss">นางสาว</option>
                                     <?php   } ?>
-                                    <?php if ($title == 'นาง') { ?>
+                                    <?php if ($title == 'Mrs') { ?>
                                         <option selected="selected" value="Mrs">นาง</option>
                                     <?php  } else { ?>
-                                        <option value="Miss">นาง</option>
+                                        <option value="Mrs">นาง</option>
                                     <?php   } ?>
-                                    <?php if ($title == 'นาย') { ?>
+                                    <?php if ($title == 'Mr') { ?>
                                         <option selected="selected" value="Mr">นาย</option>
                                     <?php  } else { ?>
-                                        <option value="Miss">นาย</option>
+                                        <option value="Mr">นาย</option>
                                     <?php   } ?>
                                 </select>
                                 <div class="select-dropdown"></div>
@@ -148,7 +148,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">เบอร์โทรติดต่อ</label>
-                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value=' <?php echo $contact_number ?>' onkeyup="limit(this);">
+                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value='<?php echo $contact_number ?>' onkeyup="limit(this);">
                                 </div>
                             </div>
                         </div>
@@ -167,7 +167,6 @@
                         <input type="hidden" id="old_username" name="old_username" value="<?php echo $username ?>">
                         <input type="hidden" id="old_password" name="old_password" value="<?php echo $password ?>">
                         <input type="hidden" id="old_email" name="old_email" value="<?php echo $email ?>">
-
                     </form>
                 </div>
             </div>
@@ -190,7 +189,91 @@
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
+<script>
+    $(document).ready(function() {
+        document.getElementsByClassName("ButtonRegister")[0].click();
+        $('#registerForm').on("submit", function(event) {
+            event.preventDefault();
 
+            if (document.getElementById("newPassword_1").value != document.getElementById("newPassword_2").value) {
+                alert("รหัสผ่านไม่ตรงกัน");
+                document.getElementById("newPassword_1").value = '';
+                document.getElementById("newPassword_2").value = '';
+
+            } else if (document.getElementById("old_password").value != document.getElementById("password").value) {
+                alert("รหัสผ่านไม่ถูกต้อง");
+                document.getElementById("password").value = '';
+
+            } else if (document.getElementById("username").value.length < 6 || document.getElementById("username").value.length > 10) {
+                alert("ชื่อผู้ใช้ต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
+                document.getElementById("password").value = '';
+
+            } else if (document.getElementById("newPassword_1").value != '') {
+                if (document.getElementById("newPassword_1").value.length < 6 || document.getElementById("newPassword_1").value.length > 10) {
+                    alert("รหัสใหม่ผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
+                    document.getElementById("password").value = '';
+                }
+            } else {
+                $.ajax({
+                    url: "./getEditData.php",
+                    method: "POST",
+                    data: $('#registerForm').serialize(),
+                    success: function(data) {
+                        if (data === 'error_username') {
+                            alert("มีชื่อผู้ใช้นี้แล้ว");
+                        } else if (data === 'error_email') {
+                            alert("อีเมลล์นี้ถูกใช้แล้ว");
+                        } else if (data === 'error_date') {
+                            alert("อายุขั้นต่ำ 15 ปี");
+                        } else {
+                            alert("แก้ไขข้อมูลเรียบร้อยแล้ว");
+                            setTimeout(() => {
+                                window.top.location.reload();
+                            }, 500);
+
+                        }
+
+                    }
+                });
+
+            }
+
+        });
+    });
+    jQuery('.lockNumber').keyup(function() {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
+    });
+
+    function limit(element) {
+        if (element.value.substr(0, 1) != '0') {
+            element.value = '';
+        } else if (element.value.substr(0, 2) == '00') {
+            element.value = '';
+        }
+        if (element.value.length > 10) {
+            element.value = element.value.substr(0, 10);
+        }
+    }
+
+    jQuery('.lockfirst_name').keyup(function() {
+        let english = /^[\u0E00-\u0E7Fก-ฮ]*$/;
+        if (!english.test(this.value)) {
+            this.value = this.value.substr(0, this.value.length - 1);
+        }
+    });
+    jQuery('.locklast_name').keyup(function() {
+        let english = /^[\u0E00-\u0E7Fก-ฮ]*$/;
+        if (!english.test(this.value)) {
+            this.value = this.value.substr(0, this.value.length - 1);
+        }
+    });
+    jQuery('.lockusername').keyup(function() {
+        let english = /^[A-Za-z]*$/;
+        if (!english.test(this.value)) {
+            this.value = this.value.substr(0, this.value.length - 1);
+        }
+    });
+</script>
 
 </html>
 

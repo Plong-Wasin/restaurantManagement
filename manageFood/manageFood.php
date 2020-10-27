@@ -115,8 +115,12 @@ require_once("../require/connectDB.php");
                 data: $('#editFoodType_form').serialize(),
                 beforeSend: function() {},
                 success: function(data) {
-                    callAjaxFoodTypeBar();
-                    $(".modal").modal("hide");
+                    if (data != "") {
+                        alert(data);
+                    } else {
+                        callAjaxFoodTypeBar();
+                        $(".modal").modal("hide");
+                    }
                 }
             });
         });
@@ -294,7 +298,7 @@ require_once("../require/connectDB.php");
         <img class="modal-content" id="img01">
     </div>
     <div class="container">
-        <h2 class="text-center p-2">จัดการเมนูอาหาร</h2>
+        <!-- <h2 class="text-center p-2">จัดการเมนูอาหาร</h2> -->
         <?php
         if ($_SESSION['role'] == 'admin') {
         ?>

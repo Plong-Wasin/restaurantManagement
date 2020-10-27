@@ -1,4 +1,7 @@
-<?php include("../Session/Check_Session.php") ?>
+<?php include("../Session/Check_Session.php");
+include("../require/connectDB.php")
+?>
+
 <!doctype html>
 <html lang="th">
 
@@ -22,27 +25,39 @@
 				</button>
 			</div>
 			<div class="p-4">
+				<?php
+				$db = "SELECT `value` FROM `setting` WHERE `name` = 'background'";
+				$check = mysqli_query($conn, $db);
+				while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
+					$logo = $record['value'];
+				}
+				?>
+				<h1><a class="logo"><img src="../src/img/<?php echo $logo ?>" width="100" height="100"></a></h1>
 				<h1><a class="logo"><?php echo $_SESSION['username'] ?> <span><?php echo $_SESSION['role'] ?></span></a></h1>
 				<ul class="list-unstyled components mb-5">
-
 					<?php
-					if ($_SESSION['role'] == 'WelcomeStaff') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../WelcomeScreen/WelcomeScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+					if ($_SESSION['role'] == 'admin') { ?>
+						<li class="active" onclick="document.getElementById('iframe').src='../Admin/AdminScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
+						</li>
+					<?php
+					} else if ($_SESSION['role'] == 'WelcomeStaff') { ?>
+						<li class="active" onclick="document.getElementById('iframe').src='../editProfile/editProfile.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>
 					<?php
 					} else if ($_SESSION['role'] == 'ServiceStaff') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../ServiceScreen/ServiceScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+						<li class="active" onclick="document.getElementById('iframe').src='../editProfile/editProfile.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>
 					<?php
 					} else if ($_SESSION['role'] == 'KitchenStaff') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../KitchenScreen/KitchenScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+						<li class="active" onclick="document.getElementById('iframe').src='../editProfile/editProfile.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>
 					<?php
 					} else if ($_SESSION['role'] == 'CashierStaff') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../CashierScreen/CashierScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
+						<li class="active" onclick="document.getElementById('iframe').src='../editProfile/editProfile.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>
 					<?php
@@ -141,9 +156,16 @@
     		">
 				หน้าหลัก
 			</div>
-
-			<iframe id="iframe" src="../Admin/AdminScreenMain.php" style="overflow: hidden; height: 88vh;
+			<?php
+			if ($_SESSION['role'] == 'admin') { ?>
+				<iframe id="iframe" src="../Admin/AdminScreenMain.php" style="overflow: hidden; height: 88vh;width: 100%; " frameborder="0"></iframe>
+			<?php
+			} else { ?>
+				<iframe id="iframe" src="../editProfile/editProfile.php" style="overflow: hidden; height: 88vh;
         width: 100%; " frameborder="0"></iframe>
+			<?php
+			} ?>
+
 
 		</div>
 </body>

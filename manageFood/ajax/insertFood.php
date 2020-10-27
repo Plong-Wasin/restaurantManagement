@@ -12,6 +12,7 @@ $sql = "SELECT food_id FROM food WHERE food_name='$name'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     echo 'มีชื่อนี้อยู่แล้ว';
+    exit();
 } else {
     if (isset($_POST['imageName'])) {
         $imageName = mysqli_real_escape_string($conn, $_POST["imageName"]);

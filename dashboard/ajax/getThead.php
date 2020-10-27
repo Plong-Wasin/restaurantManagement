@@ -2,10 +2,10 @@
 if ($_POST["topic"] == "ภาพรวม") {
 ?>
     <tr>
-        <th>ลำดับ</th>
         <th>วันเวลาที่เข้า</th>
         <th>วันเวลาที่จ่ายเงิน</th>
         <th class="text-right">ยอดขาย(บาท)</th>
+        <th></th>
     </tr>
 <?php
 } else {
