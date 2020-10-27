@@ -271,7 +271,7 @@ while ($row = mysqli_fetch_array($tab_result)) {
 </head>
 
 <body>
-    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';">
+    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';" style="display: none;">
         <!-- The Close Button -->
         <span class="close">&times;</span>
 

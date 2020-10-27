@@ -287,7 +287,7 @@ include_once("../require/req.php");
 </head>
 
 <body>
-    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';">
+    <div id="myModal" class="modal2" onclick="document.getElementById('myModal').style.display = 'none';" style="display: none;">
 
         <!-- The Close Button -->
         <span class="close">&times;</span>
@@ -295,8 +295,6 @@ include_once("../require/req.php");
         <!-- Modal Content (The Image) -->
         <img class="modal-content" id="img01">
 
-        <!-- Modal Caption (Image Text) -->
-        <div id="caption"></div>
     </div>
     <div class="container">
         <div class="text-right">
