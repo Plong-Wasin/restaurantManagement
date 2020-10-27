@@ -42,8 +42,7 @@
      max-width: 700px;
  }
  /* Caption of Modal Image (Image Text) - Same Width as the Image */
- 
- #caption {
+ /* #caption {
      margin: auto;
      display: block;
      width: 80%;
@@ -52,7 +51,7 @@
      color: #ccc;
      padding: 10px 0;
      height: 150px;
- }
+ } */
  /* Add Animation - Zoom in the Modal */
  
  .modal-content,

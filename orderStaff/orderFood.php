@@ -278,8 +278,6 @@ while ($row = mysqli_fetch_array($tab_result)) {
         <!-- Modal Content (The Image) -->
         <img class="modal-content" id="img01">
 
-        <!-- Modal Caption (Image Text) -->
-        <div id="caption"></div>
     </div>
     <div class="container">
         <div class="text-right">
