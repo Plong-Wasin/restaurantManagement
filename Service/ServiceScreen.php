@@ -6,14 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service</title>
-    <link rel="stylesheet" href="../CSS/Service.css">
+    <link rel="stylesheet" href="../CSS/css/tableSevice.css">
 </head>
 
 <body>
     <?php
     ?>
     <div id="table_status">
-        dsajdjs
         <?php include('./Service_db/AjexService.php') ?>
     </div>
 
@@ -29,15 +28,19 @@
     $(document).ready(function() {
         setInterval(() => {
             test();
-        }, 2000);
+        }, 1000);
     });
+    var oldData;
 
     function test() {
         $.ajax({
             url: './Service_db/AjexService.php',
             method: 'POST',
             success: function(data) {
-                $('#table_status').html(data);
+                if (oldData != data) {
+                    $('#table_status').html(data);
+                    oldData = data;
+                }
             }
         });
     }
