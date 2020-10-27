@@ -91,15 +91,19 @@ include("../require/connectDB.php");
 
 <body>
     <div class="container">
-        <h2 class="text-center m-1">จัดการโต๊ะ</h2>
+        <!-- <h2 class="text-center m-1">จัดการโต๊ะ</h2> -->
         <div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addTable">
-                เพิ่มโต๊ะ
-            </button>
-            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteTable">
-                ลบโต๊ะ
-            </button>
+            <?php
+            if ($_SESSION["role"] == "admin") {
+            ?>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addTable">
+                    เพิ่มโต๊ะ
+                </button>
+                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteTable">
+                    ลบโต๊ะ
+                </button>
+            <?php } ?>
         </div>
         <div>
             <table class="table">

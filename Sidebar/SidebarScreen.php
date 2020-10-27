@@ -91,12 +91,21 @@ include("../require/connectDB.php")
 					<?php
 					}
 
-					if ($_SESSION['role'] == 'admin') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../table/manageTable.php';document.getElementById('demo').innerHTML = 'จัดการโต๊ะ';">
-							<a style="cursor: pointer;"><span class="fa fa-table mr-3"></span>จัดการโต๊ะ</a>
-						</li>
+					// if ($_SESSION['role'] == 'admin') { 
+					?>
+					<li class="active" onclick="document.getElementById('iframe').src='../table/manageTable.php';document.getElementById('demo').innerHTML = '<?php if ($_SESSION['role'] == 'admin') {
+																																									echo 'จัดการโต๊ะ';
+																																								} else {
+																																									echo 'ดูสถานะโต๊ะ';
+																																								} ?>';">
+						<a style="cursor: pointer;"><span class="fa fa-table mr-3"></span><?php if ($_SESSION['role'] == "admin") {
+																								echo "จัดการโต๊ะ";
+																							} else {
+																								echo "ดูสถานะโต๊ะ";
+																							} ?></a>
+					</li>
 					<?php
-					}
+					//}
 
 					if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'ServiceStaff') { ?>
 						<li class="active" onclick="document.getElementById('iframe').src='../orderStaff/orderStaffSceen.php';document.getElementById('demo').innerHTML = 'สั่งอาหาร';">

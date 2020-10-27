@@ -60,7 +60,7 @@ if (isset($_POST["code"]) || isset($_SESSION["code"])) {
             <p>
 
                 <img src="../src/img/<?php echo $logo ?>" width="200px" height="200px">
-                <h1>ยินดีต้อนรับเข้าสู่ร้าน "<?php echo $name; ?>"</h1>
+                <h1>ยินดีต้อนรับเข้าสู่ร้าน <br>"<?php echo $name; ?>"</h1>
                 <input type="number" name="code" id="code" class="inputC" maxlength="4" onkeyup="cut()" required>
                 <button type="submit" class="btn btn-primary" style="
     height: 37px;

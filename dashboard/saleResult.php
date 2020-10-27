@@ -53,7 +53,8 @@ require_once "../require/connectDB.php";
 
 
         <div>
-            <div class="text-right">ยอดขายรวม <span id="total"> </span> บาท</div>
+            <div class="text-right">ยอดขายรวม <span id="total"> </span> บาท </div>
+            <div class="text-right">ยอดจ่ายจริง <span id="realTotal"> </span> บาท</div>
             <table class="table">
                 <thead id="thead">
                     <tr>

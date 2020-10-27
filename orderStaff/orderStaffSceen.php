@@ -1,4 +1,23 @@
-<?php include('../Session/Check_Session.php'); ?>
+<?php include('../Session/Check_Session.php');
+include("../require/connectDB.php");
+$tab_query = "SELECT * FROM food_type ORDER BY food_type_id ASC";
+$tab_result = mysqli_query($conn, $tab_query);
+if (mysqli_num_rows($tab_result) == 0) {
+?>
+    <script>
+        alert("ยังไม่มีเมนูอาหาร กรุณาเพิ่มเมนูก่อน");
+    </script>
+<?php
+    if ($_SESSION["role"] == "admin") {
+
+        echo '<script>window.location.href="../Admin/AdminScreenMain.php";</script>';
+        // header("Location:../Admin/AdminScreenMain.php");
+    } else {
+        echo '<script>window.location.href="../editProfile/editProfile.php";</script>';
+        // header("Location:../editProfile/editProfile.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-    <?php
-    include("../require/connectDB.php")  ?>
+
     <link rel="stylesheet" href="../CSS/css/selectOrderFoodStaff.css">
 </head>
 

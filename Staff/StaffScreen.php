@@ -50,7 +50,11 @@ include('../require/connectDB.php');
                                     while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                         echo "<tr>";
                                         echo "<td>" . $record['username'] . "</td>";
-                                        echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
+                                        if ($record['first_name']  == 0) {
+                                            echo "<td>" . "ยังไม่มีข้อมูล" . "</td>";
+                                        } else {
+                                            echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
+                                        }
                                         echo "<td>" . $record['role'] . "</td>";
                                         echo "<td>" . $record['password'] . "</td>";
                                         //echo '<td><button type="button" name="id-to-del" value="' . $record['username'] . '" onclick="deletestaff(' . $record['username'] . ')>ลบ</button></td>';
@@ -78,7 +82,7 @@ include('../require/connectDB.php');
                         <form id="registerForm" method="POST" onsubmit="return false">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label" for="username">ชื่อพนักงาน<br></label>
+                                    <label class="label" for="username">ชื่อผู้ใช้<br></label>
                                     <input class="input--style-4" type="text" name="username" id="username" required>
                                 </div>
                             </div>
@@ -136,6 +140,13 @@ include('../require/connectDB.php');
             if (document.getElementById("password_1").value != document.getElementById("password_2").value) {
                 alert("รหัสผ่านไม่ตรงกัน");
                 document.getElementById("registerForm").reset;
+            } else if (document.getElementById("username").value.length < 6 || document.getElementById("username").value.length > 10) {
+                alert("ชื่อผู้ใช้ต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
+                document.getElementById("username").value = '';
+            } else if (document.getElementById("password_1").value.length < 6 || document.getElementById("password_1").value.length > 10) {
+                alert("รหัสผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
+                document.getElementById("password_1").value = '';
+                document.getElementById("password_2").value = '';
             } else {
                 event.preventDefault();
                 $.ajax({
@@ -143,10 +154,11 @@ include('../require/connectDB.php');
                     method: "POST",
                     data: $('#registerForm').serialize(),
                     success: function(data) {
-                        if (data = 'error') {
+                        if (data == 'error') {
                             alert("มีชื่อผู้ใช้นี้อยู่แล้ว");
                             document.getElementById("username").value = '';
                         } else {
+                            alert("เพิ่มพนักงานเรียบร้อยแล้ว");
                             getStaff();
                             document.getElementById("registerForm").reset();
                         }

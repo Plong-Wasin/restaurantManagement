@@ -24,5 +24,3 @@ if ($result11) {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
-echo $result11['username'];
-echo $username;

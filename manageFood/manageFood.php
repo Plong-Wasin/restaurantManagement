@@ -51,6 +51,7 @@ require_once("../require/connectDB.php");
             readURL(this);
         });
         $('#insertFood_form').on("submit", function(event) {
+            event.preventDefault();
             try {
                 var name = document.getElementById("file").files[0].name;
                 var form_data = new FormData();
@@ -177,12 +178,14 @@ require_once("../require/connectDB.php");
     }
 
     function callAjaxInsertFood() {
-        event.preventDefault();
+
         $.ajax({
             url: "./ajax/insertFood.php",
             method: "POST",
             data: $('#insertFood_form').serialize(),
-            beforeSend: function() {},
+            beforeSend: function() {
+                // alert($('#insertFood_form').serialize());
+            },
             success: function(data) {
                 if (data != "") {
                     alert("มีชื่อนี้อยู่แล้ว");
@@ -190,7 +193,6 @@ require_once("../require/connectDB.php");
                     $('#insertFoodType_form')[0].reset();
                     $("#insertFood").modal('hide');
                     callAjaxSelectFoodType();
-                    console.log("|" + data + "|");
                 }
             }
         });

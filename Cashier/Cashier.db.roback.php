@@ -8,6 +8,16 @@ if (isset($_GET["checkInId"])) {
     $checkInId = $_GET["checkInId"];
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/css/selectTableCheckBin.css">
+    <link rel="stylesheet" href="../CSS/css/tableCheckBin.css">
+    <title>CashierScreen</title>
+    <?php ?>
 </head>
 
 <body>
@@ -23,6 +33,32 @@ if (isset($_GET["checkInId"])) {
                 <div class="table100">
                     <div id="spanusers">
                         <table>
+                            <?php
+                            if (isset($_POST["data"])) {
+                                $checkIn = "SELECT * FROM `check_in` WHERE table_id = $table and paid_timestamp is NULL ";
+                                $check = mysqli_query($conn, $checkIn);
+                                while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
+                                    $checkInId = $record['check_in_id'];
+                                    $tableId = $record['table_id'];
+                                }
+                            }
+                            if (isset($_GET["checkInId"])) {
+                                $checkIn = "SELECT * FROM `check_in` WHERE check_in_id = '$checkInId'";
+                                $check = mysqli_query($conn, $checkIn);
+                                while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
+                                    $checkInId = $record['check_in_id'];
+                                    $tableId = $record['table_id'];
+                                    $code = $record['code'];
+                                    $date = $record['check_in_timestamp'];
+                                }
+                            }
+                            ?>
+                            <tr>
+                                <th style="text-align:center;background: gray;color: white;font-size: x-large;">รหัส: <?php echo $code ?> ลูกค้าโต๊ะ: <?php echo $tableId ?> วันที่: <?php echo $date ?></th>
+                                <?php $tableId = 0; ?>
+                            </tr>
+                        </table>
+                        <table>
                             <thead>
                                 <tr class="table100-head">
                                     <th>ชื่ออาหาร</th>
@@ -34,22 +70,6 @@ if (isset($_GET["checkInId"])) {
                             <tbody id="tableBody">
                                 <?php
 
-                                if (isset($_POST["data"])) {
-                                    $checkIn = "SELECT * FROM `check_in` WHERE table_id = $table and paid_timestamp is NULL ";
-                                    $check = mysqli_query($conn, $checkIn);
-                                    while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
-                                        $checkInId = $record['check_in_id'];
-                                        $tableId = $record['table_id'];
-                                    }
-                                }
-                                if (isset($_GET["checkInId"])) {
-                                    $checkIn = "SELECT * FROM `check_in` WHERE check_in_id = '$checkInId'";
-                                    $check = mysqli_query($conn, $checkIn);
-                                    while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
-                                        $checkInId = $record['check_in_id'];
-                                        $tableId = 0;
-                                    }
-                                }
                                 $subSql = "SELECT order_list.food_name,order_list.food_price,SUM(order_list.food_amount) as sumFood_amount FROM check_in INNER JOIN order_time ON check_in.check_in_id=order_time.check_in_id INNER JOIN order_list ON order_time.order_time_id = order_list.order_time_id WHERE check_in.check_in_id=$checkInId AND order_list.food_cook=3 GROUP BY order_list.food_id,order_list.food_price";
                                 $subResult = mysqli_query($conn, $subSql);
                                 while ($subRow = mysqli_fetch_array($subResult, MYSQLI_ASSOC)) {
@@ -105,6 +125,7 @@ if (isset($_GET["checkInId"])) {
                     </tr>
                 </table>
             </div>
+
         </div>
     </div>
 
@@ -112,7 +133,7 @@ if (isset($_GET["checkInId"])) {
     <?php
     $_SESSION['check_in_id'] = $checkInId;
     ?>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         function CheckBin(checkInId, tableId) {
             if (<?php echo $totalPrice ?> > document.getElementById("cash").value && document.getElementById("cash").value != 0) {
@@ -156,9 +177,6 @@ if (isset($_GET["checkInId"])) {
         //             }
         //         });
         // }
-
-        src = "https://code.jquery.com/jquery-3.5.1.min.js"
-
         function cal(totalPrice) {
             if (document.getElementById("cash").value < totalPrice) {
                 alert("จำนวนเงินสดไม่ถูกต้อง");

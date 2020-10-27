@@ -33,6 +33,12 @@ while ($row = mysqli_fetch_array($result)) { ?>
             }
             ?>
         </td>
-        <td> <button type="button" class="btn btn-primary" onclick=<?php echo "editTable(" . $row["table_id"] . ")" ?> data-toggle="modal" data-target="#editTable">แก้ไข</button></td>
+        <td>
+            <?php
+            if ($_SESSION["role"] == "admin") {
+            ?>
+                <button type="button" class="btn btn-primary" onclick=<?php echo "editTable(" . $row["table_id"] . ")" ?> data-toggle="modal" data-target="#editTable">แก้ไข</button>
+            <?php } ?>
+        </td>
     </tr>
 <?php } ?>
