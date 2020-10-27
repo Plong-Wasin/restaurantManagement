@@ -1,11 +1,12 @@
-body { 
-    background-position: center center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; background-size: cover; 
-    background-image: url(images/background-desktop.jpg); 
-  }
+body {
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(images/background-desktop.jpg);
+}
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     body {
         background-image: url(images/background-mobile.jpg);
     }
@@ -16,8 +17,9 @@ body {
         background-image: url(images/background-tablet.jpg);
     }
 }
+
 @media (min-width: 1025px) {
     body {
-	    background-image: url(images/background-desktop.jpg);
-   }
+        background-image: url(images/background-desktop.jpg);
+    }
 }

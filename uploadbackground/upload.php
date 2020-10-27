@@ -1,5 +1,5 @@
 <?php
-$target_dir = "./src/img/";
+$target_dir = "../src/img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $ext = end((explode(".", basename($_FILES["fileToUpload"]["name"]))));
 $move_file = $target_dir . "background." . $ext;
@@ -42,7 +42,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 
-include("./require/connectDB.php");
+include("../require/connectDB.php");
 $query = "SELECT `value` FROM setting WHERE name = 'background'";
 $result = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($result)) {

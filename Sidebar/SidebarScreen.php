@@ -24,13 +24,9 @@
 			<div class="p-4">
 				<h1><a class="logo"><?php echo $_SESSION['username'] ?> <span><?php echo $_SESSION['role'] ?></span></a></h1>
 				<ul class="list-unstyled components mb-5">
+
 					<?php
-					if ($_SESSION['role'] == 'admin') { ?>
-						<li class="active" onclick="document.getElementById('iframe').src='../customer/enterCode.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
-							<a style=" cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
-						</li>
-					<?php
-					} else if ($_SESSION['role'] == 'WelcomeStaff') { ?>
+					if ($_SESSION['role'] == 'WelcomeStaff') { ?>
 						<li class="active" onclick="document.getElementById('iframe').src='../WelcomeScreen/WelcomeScreenMain.php';document.getElementById('demo').innerHTML = 'หน้าหลัก';">
 							<a style="cursor: pointer;"><span class="fa fa-home mr-3"></span>หน้าหลัก</a>
 						</li>

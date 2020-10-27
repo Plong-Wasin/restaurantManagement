@@ -8,13 +8,14 @@ include("../require/connectDB.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Cashier.css">
+    <link rel="stylesheet" href="../CSS/css/selectTableCheckBin.css">
+    <link rel="stylesheet" href="../CSS/css/tableCheckBin.css">
     <title>CashierScreen</title>
     <?php ?>
 </head>
 
 <body>
-    <select class="mySelect" id="mySelect" onchange="myFunction()">
+    <select class="selectOrderFoodStaff" id="mySelect" onchange="myFunction()">
         <option value=0>
             <div class="optionST">เลือกโต๊ะ</div>
         </option>

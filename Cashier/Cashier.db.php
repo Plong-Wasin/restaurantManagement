@@ -11,50 +11,85 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
     $change = 0;
     $cash = 0;
     ?>
-    <table>
-        <tr>
-            <th>ชื่ออาหาร</th>
-            <th>จำนวน</th>
-            <th>ราคา(ต่อหนึ่งรายการ)</th>
-            <th>ราคา(ทั้งหมด)</th>
-        </tr>
-        <?php
-        $checkIn = "SELECT * FROM `check_in` WHERE table_id = $orderid and paid_timestamp is NULL ";
-        $check = mysqli_query($conn, $checkIn);
-        while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
-            $checkInId = $record['check_in_id'];
-            $tableId = $record['table_id'];
-        }
-        $subSql = "SELECT order_list.food_name,order_list.food_price,SUM(order_list.food_amount) as sumFood_amount FROM check_in INNER JOIN order_time ON check_in.check_in_id=order_time.check_in_id INNER JOIN order_list ON order_time.order_time_id = order_list.order_time_id WHERE check_in.check_in_id=$checkInId AND order_list.food_cook=3 GROUP BY order_list.food_id,order_list.food_price";
-        $subResult = mysqli_query($conn, $subSql);
-        while ($subRow = mysqli_fetch_array($subResult, MYSQLI_ASSOC)) {
-            echo "<tr>";
-            echo "<td>" . $subRow['food_name'] . "</td>";
-            echo "<td>" . $subRow['sumFood_amount'] . "</td>";
-            echo "<td>" . number_format($subRow['food_price']) . "</td>";
-            echo "<td>" . number_format($subRow['sumFood_amount'] * $subRow['food_price']) . "</td>";
-        ?>
-            <?php echo '</tr>'; ?>
-        <?php
-            $totalFood_amount =  $totalFood_amount + $subRow['sumFood_amount'];
-            $totalPrice =   $totalPrice + $subRow['sumFood_amount'] * $subRow['food_price'];
-        }
-        ?>
-        <tr>
-            <td>รวม</td>
-            <td><?php echo $totalFood_amount ?></td>
-            <td>---</td>
-            <td><?php echo number_format($totalPrice) ?> บาท</td>
-        </tr>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <div id="spanusers">
+                        <table>
+                            <thead>
+                                <tr class="table100-head">
+                                    <th>ชื่ออาหาร</th>
+                                    <th>จำนวน</th>
+                                    <th>ราคา(ต่อหนึ่งรายการ)</th>
+                                    <th>ราคา(ทั้งหมด)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <?php
+                                $checkIn = "SELECT * FROM `check_in` WHERE table_id = $orderid and paid_timestamp is NULL ";
+                                $check = mysqli_query($conn, $checkIn);
+                                while ($record = mysqli_fetch_array($check, MYSQLI_ASSOC)) {
+                                    $checkInId = $record['check_in_id'];
+                                    $tableId = $record['table_id'];
+                                }
+                                $subSql = "SELECT order_list.food_name,order_list.food_price,SUM(order_list.food_amount) as sumFood_amount FROM check_in INNER JOIN order_time ON check_in.check_in_id=order_time.check_in_id INNER JOIN order_list ON order_time.order_time_id = order_list.order_time_id WHERE check_in.check_in_id=$checkInId AND order_list.food_cook=3 GROUP BY order_list.food_id,order_list.food_price";
+                                $subResult = mysqli_query($conn, $subSql);
+                                while ($subRow = mysqli_fetch_array($subResult, MYSQLI_ASSOC)) {
+                                    echo "<tr>";
+                                    echo "<td>" . $subRow['food_name'] . "</td>";
+                                    echo "<td>" . $subRow['sumFood_amount'] . "</td>";
+                                    echo "<td>" . number_format($subRow['food_price']) . "</td>";
+                                    echo "<td>" . number_format($subRow['sumFood_amount'] * $subRow['food_price']) . "</td>";
+                                ?>
+                                    <?php echo '</tr>'; ?>
+                                <?php
+                                    $totalFood_amount =  $totalFood_amount + $subRow['sumFood_amount'];
+                                    $totalPrice =   $totalPrice + $subRow['sumFood_amount'] * $subRow['food_price'];
+                                }
+                                ?>
+                                <tr>
+                                    <td>รวม</td>
+                                    <td><?php echo $totalFood_amount ?></td>
+                                    <td>---</td>
+                                    <td><?php echo number_format($totalPrice) ?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="background: #36304a;text-align: center;font-size: 20px;color: white;">คิดเงิน</td>
+                                </tr>
+                                <tr>
+                                    <td> เงินสด</td>
+                                    <td colspan="3" style="text-align: center;"> <input class="cash" id=cash type="text" name="text_plain" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onchange="cal(<?php echo $totalPrice ?>)" style="
+    align-items: center;
+    text-align: right;
+    line-height: 45px;
+    background: gainsboro;
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.4s ease;
+    padding-right: 10px;" required onchange="check(<?php $totalPrice ?>)" /></td>
 
-    </table>
-    <div id=cal>
-    </div>
-    เงินสด
-    <input class="fname" id=fname type="text" name="text_plain" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onchange="cal(<?php echo $totalPrice ?>)" />
+                                </tr>
+                            </tbody>
+                        </table>
+                        <tr>
+                            <div id=cal>
+                            </div>
+                        </tr>
 
-    <div id=cal>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
     <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button>
 
     <?php
@@ -100,16 +135,20 @@ $orderid = mysqli_real_escape_string($conn, $_POST["data"]); ?>
         src = "https://code.jquery.com/jquery-3.5.1.min.js"
 
         function cal(totalPrice) {
-            $.ajax({
-                url: "./Cashier_db/Cal.php",
-                method: "POST",
-                data: {
-                    data: totalPrice,
-                    data1: document.getElementById("fname").value,
-                },
-                success: function(data) {
-                    $("#cal").html(data);
-                }
-            });
+            if (document.getElementById("cash").value < totalPrice) {
+                alert("จำนวนเงินสดไม่ถูกต้อง");
+            } else {
+                $.ajax({
+                    url: "./Cashier_db/Cal.php",
+                    method: "POST",
+                    data: {
+                        data: totalPrice,
+                        data1: document.getElementById("cash").value,
+                    },
+                    success: function(data) {
+                        $("#cal").html(data);
+                    }
+                });
+            }
         }
     </script>
