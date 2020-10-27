@@ -85,29 +85,34 @@ $table = mysqli_real_escape_string($conn, $_POST["data"]); ?>
         </div>
     </div>
     <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button>
-    <button class="printBin" onclick="window.open('./Cashier.db copy.php?checkInId=<?php echo $checkInId; ?>', '_blank');">ปลิ้นใบเสร็จ</button>
+    <button class="printBin" onclick="window.open('./Cashier.db copy.php?checkInId=<?php echo $checkInId; ?>', '_blank');">ปริ้นใบเก็บเงิน</button>
 
     <?php
     $_SESSION['check_in_id'] = $checkInId;
     ?>
 
     <script>
-        function CheckBin(checkInId, tableId, cash) {
-            $n = cash;
-            if (confirm("ยืนยัน"))
-                $.ajax({
-                    url: "./Cashier_db/CheckBin.php",
-                    method: "POST",
-                    data: {
-                        data: checkInId,
-                        data1: tableId,
+        function CheckBin(checkInId, tableId) {
+            if (<?php echo $totalPrice ?> > document.getElementById("cash").value) {
+                alert("จำนวนเงินไม่ถูกต้อง");
+            } else {
+                if (confirm("ยืนยัน")) {
+                    // $.ajax({
+                    //     url: "./Cashier_db/CheckBin.php",
+                    //     method: "POST",
+                    //     data: {
+                    //         data: checkInId,
+                    //         data1: tableId,
 
-                    },
-                    success: function(data) {
-                        alert("คิดเงินเสร็จสิ้น");
-                        location.reload('./CashierScreen.php');
-                    }
-                });
+                    //     },
+                    //     success: function(data) {
+                    //         alert("คิดเงินเสร็จสิ้น");
+                    //         location.reload('./CashierScreen.php');
+                    //     }
+                    // });
+                    window.open("./Cashier.db copy 2.php?checkInId=" + checkInId + "&cash=" + document.getElementById("cash").value, '_blank');
+                }
+            }
         }
 
         // function PrintBin(checkInId, tableId, cash) {

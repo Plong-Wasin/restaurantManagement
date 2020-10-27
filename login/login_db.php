@@ -16,6 +16,23 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) == 0) {
+            if ($username == "admin" && $password == "admin") {
+                $sql = "INSERT INTO users (username,role,password)
+                VALUES ('admin','admin','admin')";
+
+                if (mysqli_query($conn, $sql)) {
+                    echo "New record created successfully";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+                $_SESSION['username'] = "admin";
+                $_SESSION['role'] =  "admin";
+                header("location:../Sidebar/SidebarScreen.php");
+            }
+        }
         // session_destroy();
         session_unset();
         session_start();
