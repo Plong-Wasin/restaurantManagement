@@ -112,7 +112,7 @@ include('../require/connectDB.php');
                                     <input class="input--style-4" type="text" type="password" name="password_2" id="password_2" required>
                                 </div>
                             </div>
-                            <div cclass="p-t-15">
+                            <div class="p-t-15">
                                 <div class="ButtonRegister">
                                     <button class="btn btn--radius-2 btn--blue" id="ButtonRegister" type="submit" name="reg_user" class="btn">ยืนยัน</button>
                                 </div>
