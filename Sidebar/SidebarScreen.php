@@ -63,7 +63,7 @@ include("../require/connectDB.php")
 					<?php
 					}
 
-					if ($_SESSION['role'] == 'admin') { ?>
+					if ($_SESSION['role'] == 'admin'  || $_SESSION['role'] == 'CashierStaff') { ?>
 						<li class="active" onclick="document.getElementById('iframe').src='../dashboard/saleResult.php';document.getElementById('demo').innerHTML = 'ประวัติการขาย';">
 							<a style="cursor: pointer;"><span class="fa fa-bar-chart mr-3"></span>ประวัติการขาย</a>
 						</li>
