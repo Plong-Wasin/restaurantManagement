@@ -108,7 +108,7 @@ if ($_POST["topic"] == "ภาพรวม") {
             }
         ?>
             <tr class="<?php if ($row["paid_status"] == 2) {
-                            echo "text-danger";
+                            echo "bg-danger text-white";
                         } ?>" onclick="showHideSubTable(<?php echo $i ?>)" style="cursor: pointer;">
                 <td scope="row"><?php echo $row["food_name"] ?></td>
                 <td class="text-right"><?php echo number_format($row["food_price"]) ?></td>
