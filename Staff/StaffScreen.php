@@ -50,7 +50,7 @@ include('../require/connectDB.php');
                                     while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                         echo "<tr>";
                                         echo "<td>" . $record['username'] . "</td>";
-                                        if ($record['first_name']  == 0) {
+                                        if ($record['first_name']  == null) {
                                             echo "<td>" . "ยังไม่มีข้อมูล" . "</td>";
                                         } else {
                                             echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
@@ -83,7 +83,7 @@ include('../require/connectDB.php');
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label" for="username">ชื่อผู้ใช้<br></label>
-                                    <input class="input--style-4" type="text" name="username" id="username" required>
+                                    <input class="input--style-4 lockusername" type="text" name="username" id="username" required onchange="">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -166,6 +166,13 @@ include('../require/connectDB.php');
             }
 
         });
+    });
+
+    jQuery('.lockusername').keyup(function() {
+        let english = /^[A-Za-z]*$/;
+        if (!english.test(this.value)) {
+            this.value = this.value.substr(0, this.value.length - 1);
+        }
     });
 
     function getStaff() {

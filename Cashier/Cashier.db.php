@@ -130,6 +130,7 @@ if (isset($_GET["checkInId"])) {
                         },
                         success: function(data) {
                             alert("คิดเงินเสร็จสิ้น");
+                            //alert(data);
                             location.reload('./CashierScreen.php');
                         }
                     });

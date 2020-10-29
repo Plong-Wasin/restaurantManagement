@@ -57,13 +57,13 @@ if (isset($_SESSION['username'])) {
 
                         <div class="input-group">
                             <label class="label" for="username">ชื่อผู้ใช้</label>
-                            <input class="input--style-4 lockusername" type="text" name="username">
+                            <input class="input--style-4 lockusername" type="text" name="username" required>
                         </div>
 
 
                         <div class="input-group">
                             <label class="label" for="password">รหัสผ่าน</label>
-                            <input class="input--style-4 lockusername" type="password" name="password">
+                            <input class="input--style-4 lockusername" type="password" name="password" required>
 
                         </div>
                         <div class="input-group" style="text-align: right;">

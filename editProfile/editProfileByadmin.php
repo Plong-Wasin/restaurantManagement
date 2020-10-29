@@ -25,8 +25,8 @@
 <body>
     <?php
     include("../require/connectDB.php");
-    $session = $_GET['id'];
-    $query = "SELECT * FROM `users` WHERE id = '$session'";
+    $session = $_SESSION['username'];
+    $query = "SELECT * FROM `users` WHERE username = '$session'";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -67,7 +67,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">รหัสผ่านเก่า</label>
-                                <input class="input--style-4" type="text" name="password" id="password" value='<?php echo $password ?>' required>
+                                <input class="input--style-4" type="text" name="password" id="password" value="<?php echo $password ?>" required>
                             </div>
                         </div>
                         <div class="row row-space">
@@ -148,7 +148,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">เบอร์โทรติดต่อ</label>
-                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value='<?php echo $contact_number ?>' onkeyup="limit(this);">
+                                    <input class="input--style-4 lockNumber" type="text" name="contact_number" name="contact_number" id="contact_number" value='<?php echo $contact_number ?>' onkeyup="limit(this);" required>
                                 </div>
                             </div>
                         </div>
@@ -208,6 +208,9 @@
                 alert("ชื่อผู้ใช้ต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
                 document.getElementById("password").value = '';
 
+            } else if (document.getElementById("contact_number").value.length < 10) {
+                alert("เบอร์โทรศัพท์ไม่ถูกต้อง");
+                document.getElementById("contact_number").value = '';
             } else if (document.getElementById("newPassword_1").value != '') {
                 if (document.getElementById("newPassword_1").value.length < 6 || document.getElementById("newPassword_1").value.length > 10) {
                     alert("รหัสใหม่ผ่านต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");

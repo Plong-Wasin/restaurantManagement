@@ -8,7 +8,11 @@ if ($result) {
     while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         echo "<tr>";
         echo "<td>" . $record['username'] . "</td>";
-        echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
+        if ($record['first_name']  == 'null') {
+            echo "<td>" . "ยังไม่มีข้อมูล" . "</td>";
+        } else {
+            echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
+        }
         echo "<td>" . $record['role'] . "</td>";
         echo "<td>" . $record['password'] . "</td>";
         //echo '<td><button type="button" name="id-to-del" value="' . $record['username'] . '" onclick="deletestaff(' . $record['username'] . ')>ลบ</button></td>';
