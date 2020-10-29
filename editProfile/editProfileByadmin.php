@@ -25,8 +25,8 @@
 <body>
     <?php
     include("../require/connectDB.php");
-    $session = $_SESSION['username'];
-    $query = "SELECT * FROM `users` WHERE username = '$session'";
+    $session = $_GET['id'];
+    $query = "SELECT * FROM `users` WHERE id = '$session'";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -67,7 +67,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">รหัสผ่านเก่า</label>
-                                <input class="input--style-4" type="text" name="password" id="password" value="<?php echo $password ?>" required>
+                                <input class="input--style-4" type="text" name="password" id="password" value="<?php echo $password ?>" readonly="readonly" required>
                             </div>
                         </div>
                         <div class="row row-space">

@@ -1,4 +1,5 @@
 <?php
+include("../require/connectDB.php");
 $target_dir = "../src/img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $ext = end((explode(".", basename($_FILES["fileToUpload"]["name"]))));
@@ -37,22 +38,22 @@ if (
     $uploadOk = 0;
 }
 
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
+// if (file_exists($target_file)) {
+//     echo "Sorry, file already exists.";
+//     $uploadOk = 0;
+// }
 
-include("../require/connectDB.php");
-$query = "SELECT `value` FROM setting WHERE name = 'background'";
-$result = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_array($result)) {
-    unlink("../src/img/" . $row["value"]);
-}
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
 } else {
+    $query = "SELECT `value` FROM setting WHERE name = 'background'";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        unlink("../src/img/" . $row["value"]);
+    }
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $move_file)) {
         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
         $sql1 = "UPDATE `setting` SET `value` = '$filename' WHERE `name` = 'background'";

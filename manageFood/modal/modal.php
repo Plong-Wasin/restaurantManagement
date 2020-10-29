@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group pt-1">
                             <label for="file" class="col-sm-12">รูปภาพอาหาร</label>
-                            <input type="file" class="col-sm-12" name="file" id="file" />
+                            <input type="file" class="col-sm-12" name="file" id="file" accept=".jpeg,.png,.jpg,.gif" />
                             <span id="uploaded_image"></span>
 
                         </div>

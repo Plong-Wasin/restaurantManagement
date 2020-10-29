@@ -86,8 +86,8 @@ include('../Session/Check_Session.php');
                                             <label class="label" for="username">โลโก้เก่า<br></label>
                                             <img src="../src/img/<?php echo $background_restaurant; ?>" width="200" height="200">
                                         <?php } ?>
-                                        <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 10px;">
-                                        <label class="label" for="username">โลโก้ใหม่<br></label>
+                                        <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 10px;" accept=".jpeg,.png,.jpg,.gif">
+                                        <label class=" label" for="username">โลโก้ใหม่<br></label>
                                         <span id="uploaded_image"></span>
                                         <div cclass="p-t-15">
                                             <button class="btn btn--radius-2 btn--blue" id="ButtonRegister" type="submit" name="submit">ยืนยัน</button>

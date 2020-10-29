@@ -119,6 +119,7 @@ include_once("../require/req.php");
             }
         });
     }
+    var alertSuccessNoneDisplayTimeout;
 
     function callAjaxConfirmOrder() {
         $.ajax({
@@ -128,6 +129,11 @@ include_once("../require/req.php");
                 tableId: <?php echo $tableId ?>
             },
             success: function(data) {
+                clearTimeout(alertSuccessNoneDisplayTimeout);
+                document.getElementById("successConfirmOrder").style.display = "block";
+                alertSuccessNoneDisplayTimeout = setTimeout(() => {
+                    document.getElementById("successConfirmOrder").style.display = "none";
+                }, 1000);
                 callAjaxGetData();
             }
         });
@@ -453,6 +459,9 @@ include_once("../require/req.php");
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-success" id="successConfirmOrder" role="alert" style="display: none;">
+                        สั่งอาหารเสร็จสิ้น
+                    </div>
                     <nav class="nav nav-pills nav-justified m-1" id="tab">
                         <a class="nav-link active m-1" data-toggle="tab" id="currentCart">ตะกร้าสั่งอาหาร</a>
                         <a class="nav-link m-1" data-toggle="tab" id="history">ประวัติการสั่งอาหาร</a>
