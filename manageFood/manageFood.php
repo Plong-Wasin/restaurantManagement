@@ -309,7 +309,7 @@ require_once("../require/connectDB.php");
                 <button type="button" class="btn btn-secondary col-2" data-toggle="modal" data-target="#editFoodType">แก้ไขชื่อประเภทอาหาร</button>
                 <button type="button" class="btn btn-danger col-2" data-toggle="modal" data-target="#deleteFoodType">ลบประเภทอาหาร</button>
                 <div class="col-2"></div>
-                <button type="button" class="btn btn-warning col-2" onclick="window.open('./changeStatus/changeStatus.php')">เพิ่มอาหาร</button>
+                <button type="button" class="btn btn-warning col-2" onclick="window.open('./changeStatus/changeStatus.php')">แก้ไขสถานะอาหาร</button>
                 <button type="button" class="btn btn-success col-2" data-toggle="modal" data-target="#insertFood" onclick="insertFoodButton();">เพิ่มอาหาร</button>
             </div>
         <?php

@@ -57,7 +57,7 @@ require_once("../../require/connectDB.php");
         <table class="table">
             <thead>
                 <tr>
-                    <th width=10%></th>
+                    <th width=120px><input type="checkbox" name="" id="select_all"> select all</th>
                     <th width="200" class="text-center">รูป</th>
                     <th>ชื่ออาหาร</th>
                     <th>ราคา (บาท)</th>
@@ -145,15 +145,52 @@ require_once("../../require/connectDB.php");
 
         function getCheckbox() {
             let rawData = '[';
-            for (i = 0; i < document.getElementsByClassName("form-check-input").length; i++) {
+            for (i = 0; i < document.getElementsByClassName("checkbox").length; i++) {
                 if (i != 0) {
                     rawData = rawData + ",";
                 }
-                rawData = rawData + '{"id":\"' + document.getElementsByClassName("form-check-input")[i].value + '\","checked":' + document.getElementsByClassName("form-check-input")[i].checked + '}';
+                rawData = rawData + '{"id":\"' + document.getElementsByClassName("checkbox")[i].value + '\","checked":' + document.getElementsByClassName("checkbox")[i].checked + '}';
             }
             rawData = rawData + ']';
             return rawData;
         }
+        $(document).ready(function() {
+            $("#select_all").on('click', function() {
+                if (this.checked) {
+                    $('.checkbox').each(function() {
+                        this.checked = true;
+                    })
+                } else {
+                    $('.checkbox').each(function() {
+                        this.checked = false;
+                    })
+                }
+            })
+            $(".checkbox").on('click', function() {
+                if ($(".checkbox:checked").length == $('.checkbox').length) {
+                    $("#select_all").prop("checked", true);
+                } else {
+                    $("#select_all").prop("checked", false);
+
+                }
+            })
+        });
+        $(document).ajaxStop(function() {
+            $(".checkbox").on('click', function() {
+                if ($(".checkbox:checked").length == $('.checkbox').length) {
+                    $("#select_all").prop("checked", true);
+                } else {
+                    $("#select_all").prop("checked", false);
+
+                }
+            });
+            if ($(".checkbox:checked").length == $('.checkbox').length) {
+                $("#select_all").prop("checked", true);
+            } else {
+                $("#select_all").prop("checked", false);
+
+            }
+        })
     </script>
 </body>
 
