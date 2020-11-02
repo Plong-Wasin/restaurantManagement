@@ -35,7 +35,7 @@ require_once("../../require/connectDB.php");
 
 <body>
     <div class="container">
-        <h2 class="text-center">แก้ไขเมนูแนะนำ</h2>
+        <h2 class="text-center">แก้ไขสถานะอาหาร</h2>
         <div class="row py-2">
             <button type="button" class="btn btn-secondary col-2" id="back">กลับ</button>
             <div class="col-8"></div>
