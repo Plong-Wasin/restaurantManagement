@@ -121,7 +121,7 @@ if (isset($_GET["checkInId"])) {
                 <table style="width: 200px;">
                     <tr>
                         <td> <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button></td>
-                        <td> <button class="printBin" onclick="window.open('./PrintBinV1.php?checkInId=<?php echo $checkInId; ?>', '_blank');">ปริ้นใบเก็บเงิน</button></td>
+                        <td> <button class="printBin" onclick="window.open('./PrintBinV1.php?checkInId=<?php echo $checkInId; ?>', '_blank');">พิมพ์ใบเก็บเงิน</button></td>
                     </tr>
                 </table>
             </div>

@@ -103,7 +103,7 @@ if (isset($_GET["checkInId"])) {
         </div>
     </div>
     <button class="CheckBin" onclick="CheckBin(<?php echo $checkInId ?> , <?php echo $tableId ?> )">คิดเงิน</button>
-    <button class="printBin" onclick="window.open('./Cashier.db copy.php?checkInId=<?php echo $checkInId; ?>', '_blank');">ปริ้นใบเก็บเงิน</button>
+    <button class="printBin" onclick="window.open('./Cashier.db copy.php?checkInId=<?php echo $checkInId; ?>', '_blank');">พิมพ์ใบเก็บเงิน</button>
 
     <?php
     $_SESSION['check_in_id'] = $checkInId;

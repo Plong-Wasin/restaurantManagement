@@ -44,9 +44,9 @@ if ($_POST["topic"] == "ภาพรวม") {
                 <td class="text-right"><?php echo number_format($row['total']) ?></td>
                 <td class="text-right">
                     <?php if ($row["paid_status"] == 1) { ?>
-                        <button type="button" class="btn btn-primary" onclick='window.open("../../Cashier/PrintBinV2.php?checkInId=<?php echo $row["check_in_id"]; ?>&cash=<?php echo $row["cash"] ?>","_blank");'>ปริ้นใบเสร็จ</button>
+                        <button type="button" class="btn btn-primary" onclick='window.open("../Cashier/PrintBinV2.php?checkInId=<?php echo $row["check_in_id"]; ?>&cash=<?php echo $row["cash"] ?>","_blank");'>พิมพ์ใบเสร็จ</button>
                     <?php } elseif ($row["paid_status"] == 2) { ?>
-                        <button type="button" class="btn btn-danger" onclick='window.open("../../Cashier/Cashier.db.roback.php?checkInId=<?php echo $row["check_in_id"]; ?>")'>ไปหน้าจ่ายเงิน</button>
+                        <button type="button" class="btn btn-danger" onclick='window.open("../Cashier/Cashier.db.roback.php?checkInId=<?php echo $row["check_in_id"]; ?>")'>ไปหน้าจ่ายเงิน</button>
                     <?php } ?>
                 </td>
             </tr>
