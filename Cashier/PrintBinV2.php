@@ -41,7 +41,7 @@ $casha = $_GET["cash"]; ?>
     <div style="width: 320px;padding: 5px;  margin: 20px;">
         <div>
             <h1 style="text-align: center;"><a class="logo"><img src="../src/img/<?php echo $logo ?>" width="100" height="100"></a></h1>
-            <h4 style="text-align: center;">ใบเรียกเก็บเงิน</h4>
+            <h4 style="text-align: center;">ใบเสร็จรับเงิน</h4>
             <table>
                 <tr>
                     <th style="font-size: 20px;">
@@ -89,20 +89,20 @@ $casha = $_GET["cash"]; ?>
             </table>
             <table>
                 <tr style="border-top-style: solid;">
-                    <th style="text-align: right; width: 180px">รวม</th>
-                    <th style="text-align: right; width: 90px; border-bottom-style: solid;"><?php echo number_format("$totalPrice", 2) . "<br>"; ?></th>
+                    <th style="text-align: right; width: 150px">รวม</th>
+                    <th style="text-align: right; width: 110px; border-bottom-style: solid;font-size: 16px"><?php echo number_format("$totalPrice", 2) . " บาท" . "<br>"; ?></th>
                 </tr>
                 <tr>
-                    <th style="text-align: right; width: 180px">รวมทั้งสิ้น</th>
-                    <th style="text-align: right;width: 90px;border-bottom-style: double;font-size: 25px;border-width: 10px;"><?php echo number_format("$totalPrice", 2) . "<br>"; ?></th>
+                    <th style="text-align: right; width: 150px">รวมทั้งสิ้น</th>
+                    <th style="text-align: right;width: 110px;border-bottom-style: double;font-size: 16px;border-width: 10px;"><?php echo number_format("$totalPrice", 2) . " บาท" . "<br>"; ?></th>
                 </tr>
                 <tr>
-                    <th style="text-align: right; width: 180px">เงินสด</th>
-                    <th style="text-align: right;width: 90px;border-bottom-style: solid;font-size: 16px;border-width: 1px;"><?php echo number_format("$casha", 2) . "<br>"; ?></th>
+                    <th style="text-align: right; width: 150px">เงินสด</th>
+                    <th style="text-align: right;width: 110px;border-bottom-style: solid;font-size: 16px;border-width: 1px;"><?php echo number_format("$casha", 2) . " บาท" . "<br>"; ?></th>
                 </tr>
                 <tr>
-                    <th style="text-align: right; width: 180px">เงินทอน</th>
-                    <th style="text-align: right;width: 90px;border-bottom-style: solid;font-size: 20px;border-width: 1px;"><?php echo $test .  "<br>"; ?></th>
+                    <th style="text-align: right; width: 150px">เงินทอน</th>
+                    <th style="text-align: right;width: 110px;border-bottom-style: solid;font-size: 16px;border-width: 1px;"><?php echo number_format("$test", 2) . " บาท" . "<br>"; ?></th>
                 </tr>
             </table>
             <table>

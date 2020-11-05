@@ -16,7 +16,7 @@ if (isset($_POST['login_user'])) {
     }
 
     if (count($errors) == 0) {
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM users WHERE `status`= 1 ";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) == 0) {
             if ($username == "admin" && $password == "admin") {

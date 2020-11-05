@@ -12,7 +12,24 @@ include("../require/connectDB.php")
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./css/style.css">
+	<?php
+	if ($_SESSION['role'] == 'admin') { ?>
+		<link rel="stylesheet" href="./css/style.css">
+	<?php
+	} else if ($_SESSION['role'] == 'WelcomeStaff') { ?>
+		<link rel="stylesheet" href="./css/styleW.css">
+	<?php
+	} else if ($_SESSION['role'] == 'ServiceStaff') { ?>
+		<link rel="stylesheet" href="./css/styleS.css">
+	<?php
+	} else if ($_SESSION['role'] == 'KitchenStaff') { ?>
+		<link rel="stylesheet" href="./css/styleK.css">
+	<?php
+	} else if ($_SESSION['role'] == 'CashierStaff') { ?>
+		<link rel="stylesheet" href="./css/styleC.css">
+	<?php
+	}
+	?>
 </head>
 
 <body>
@@ -149,8 +166,10 @@ include("../require/connectDB.php")
 
 
 		<!-- Page Content  -->
-		<div id="content">
-			<div id="demo" style="
+		<?php
+		if ($_SESSION['role'] == 'admin') { ?>
+			<div id="content">
+				<div id="demo" style="
     		text-align: center;
     		font-size: 40px;
     		color: white;
@@ -163,20 +182,95 @@ include("../require/connectDB.php")
     		text-transform: uppercase;
     		background: #3445b4;
     		">
-				หน้าหลัก
-			</div>
+					หน้าหลัก
+				</div>
 			<?php
-			if ($_SESSION['role'] == 'admin') { ?>
-				<iframe id="iframe" src="../Admin/AdminScreenMain.php" style="overflow: hidden; height: 88vh;width: 100%; " frameborder="0"></iframe>
-			<?php
-			} else { ?>
-				<iframe id="iframe" src="../editProfile/editProfile.php" style="overflow: hidden; height: 88vh;
+		} else if ($_SESSION['role'] == 'WelcomeStaff') { ?>
+				<div id="content">
+					<div id="demo" style="
+    		text-align: center;
+    		font-size: 40px;
+    		color: white;
+    		margin: 10px 26px 10px 26px;
+    		border-style: solid;
+    		border-color: #800080;
+    		border-radius: 20px;
+    		font-family: 'RaleWay',sans-serif;
+    		font-weight: 800;
+    		text-transform: uppercase;
+    		background: #800080;
+    		">
+						หน้าหลัก
+					</div>
+				<?php
+			} else if ($_SESSION['role'] == 'ServiceStaff') { ?>
+					<div id="content">
+						<div id="demo" style="
+    		text-align: center;
+    		font-size: 40px;
+    		color: white;
+    		margin: 10px 26px 10px 26px;
+    		border-style: solid;
+    		border-color: #095c10;
+    		border-radius: 20px;
+    		font-family: 'RaleWay',sans-serif;
+    		font-weight: 800;
+    		text-transform: uppercase;
+    		background: #095c10;
+    		">
+							หน้าหลัก
+						</div>
+					<?php
+				} else if ($_SESSION['role'] == 'KitchenStaff') { ?>
+						<div id="content">
+							<div id="demo" style="
+    		text-align: center;
+    		font-size: 40px;
+    		color: white;
+    		margin: 10px 26px 10px 26px;
+    		border-style: solid;
+    		border-color: firebrick;
+    		border-radius: 20px;
+    		font-family: 'RaleWay',sans-serif;
+    		font-weight: 800;
+    		text-transform: uppercase;
+    		background: firebrick;
+    		">
+								หน้าหลัก
+							</div>
+						<?php
+					} else if ($_SESSION['role'] == 'CashierStaff') { ?>
+							<div id="content">
+								<div id="demo" style="
+    		text-align: center;
+    		font-size: 40px;
+    		color: white;
+    		margin: 10px 26px 10px 26px;
+    		border-style: solid;
+    		border-color: #806904;
+    		border-radius: 20px;
+    		font-family: 'RaleWay',sans-serif;
+    		font-weight: 800;
+    		text-transform: uppercase;
+    		background: #806904;
+    		">
+									หน้าหลัก
+								</div>
+							<?php
+						}
+							?>
+							<?php
+							if ($_SESSION['role'] == 'admin') { ?>
+								<iframe id="iframe" src="../Admin/AdminScreenMain.php" style="overflow: hidden; height: 88vh;width: 100%; " frameborder="0"></iframe>
+							<?php
+							} else { ?>
+								<iframe id="iframe" src="../editProfile/editProfile.php" style="overflow: hidden; height: 88vh;
         width: 100%; " frameborder="0"></iframe>
-			<?php
-			} ?>
+							<?php
+							} ?>
 
 
-		</div>
+							</div>
 </body>
 </div>
 

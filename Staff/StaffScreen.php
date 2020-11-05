@@ -32,19 +32,24 @@ include('../require/connectDB.php');
             <div class="wrap-table100">
                 <div class="table100">
                     <div id="spanusers">
+                        <div class="work">
+                            <button onclick="work()" class="work" style="    display: inline-flex;    height: 40px;    width: 150px;    border: 2px solid;    margin: 15px;    text-transform: uppercase;    text-decoration: none;    font-size: 16px;    letter-spacing: 1.5px;    align-items: center;    justify-content: center;    overflow: hidden; background: darkgrey">ที่ทำงานอยู่</button>
+                        </div>
+                        <div class="notwork">
+                            <button onclick="notwork()" lass="notwork" style="    display: inline-flex;    height: 40px;    width: 150px;    border: 2px solid;    margin:1px 15px 15px 15px;    text-transform: uppercase;    text-decoration: none;    font-size: 16px;    letter-spacing: 1.5px;    align-items: center;    justify-content: center;    overflow: hidden;">ออกจากงานแล้ว</button>
+                        </div>
                         <table>
                             <thead>
                                 <tr class="table100-head">
                                     <th>ชื่อผู้ใช้</th>
                                     <th>ชื่อพนักงาน</th>
                                     <th>ตำแหน่ง</th>
-                                    <th>รหัสผ่าน</th>
                                     <th>แก้ไขข้อมูล</th>
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
                                 <?php
-                                $readstaff = "SELECT * FROM users";
+                                $readstaff = "SELECT * FROM users WHERE `status` = 1";
                                 $result = mysqli_query($conn, $readstaff);
                                 if ($result) {
                                     while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -56,7 +61,6 @@ include('../require/connectDB.php');
                                             echo "<td>" . $record['first_name'] . "     " . $record['last_name'] . "</td>";
                                         }
                                         echo "<td>" . $record['role'] . "</td>";
-                                        echo "<td>" . $record['password'] . "</td>";
                                         //echo '<td><button type="button" name="id-to-del" value="' . $record['username'] . '" onclick="deletestaff(' . $record['username'] . ')>ลบ</button></td>';
                                 ?>
                                         <td>
@@ -83,7 +87,7 @@ include('../require/connectDB.php');
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label" for="username">ชื่อผู้ใช้<br></label>
-                                    <input class="input--style-4 lockusername" type="text" name="username" id="username" required onchange="">
+                                    <input class="input--style-4 lockusername" type="text" name="username" id="username" required onchange="" placeholder="จำกัดตัวอักษร 6-10 ตัว">
                                 </div>
                             </div>
                             <div class="input-group">
@@ -103,13 +107,13 @@ include('../require/connectDB.php');
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label" for="password_1">รหัสผ่าน<br></label>
-                                    <input class="input--style-4" type="text" type="password" name="password_1" id="password_1" required>
+                                    <input class="input--style-4" type="password" name="password_1" id="password_1" required placeholder="จำกัดตัวอักษร 6-10 ตัว">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label" for="password_2">ยืนยันรหัสผ่าน<br></label>
-                                    <input class="input--style-4" type="text" type="password" name="password_2" id="password_2" required>
+                                    <input class="input--style-4" type="password" name="password_2" id="password_2" required placeholder="จำกัดตัวอักษร 6-10 ตัว">
                                 </div>
                             </div>
                             <div class="p-t-15">
@@ -168,6 +172,7 @@ include('../require/connectDB.php');
         });
     });
 
+
     jQuery('.lockusername').keyup(function() {
         let english = /^[A-Za-z]*$/;
         if (!english.test(this.value)) {
@@ -175,11 +180,46 @@ include('../require/connectDB.php');
         }
     });
 
+    // $(document).ready(function() {
+    //     document.getElementsByClassName("work")[0].click();
+    //     $.ajax({
+    //         success: function() {
+    //             work()
+    //         }
+    //     });
+    // });
+    // $(document).ready(function() {
+    //     document.getElementsByClassName("notwork")[0].click();
+    //     $.ajax({
+    //         success: function() {
+    //             work()
+    //         }
+    //     });
+    // });
+
+    function work() {
+        $.ajax({
+            url: "./Staff_db/AjexStaff.php",
+            success: function(data) {
+                $("#spanusers").html(data);
+            }
+        });
+    }
+
+    function notwork() {
+        $.ajax({
+            url: "./Staff_db/AjexStaffnotwork.php",
+            success: function(data) {
+                $("#spanusers").html(data);
+            }
+        });
+    }
+
     function getStaff() {
         $.ajax({
             url: "./Staff_db/AjexStaff.php",
             success: function(data) {
-                $("#tableBody").html(data);
+                $("#spanusers").html(data);
             }
         });
     }

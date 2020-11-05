@@ -1,5 +1,8 @@
 <?php
 require_once(__DIR__ . "/../../require/connectDB.php");
+if (!isset($_SESSION)) {
+    session_start();
+}
 $sql = "SELECT * FROM `table`";
 if (!$result = mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

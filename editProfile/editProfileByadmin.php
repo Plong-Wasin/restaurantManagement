@@ -136,7 +136,7 @@
                                     <label class="label">วัน/เดือน/ปี เกิด</label>
                                     <div class="input-group-icon">
                                         <?php if ($birthdate == null) { ?>
-                                            <input class="input--style-4 js-datepicker" type="text" readonly="readonly" name="birthday" id="birthday" required>
+                                            <input class="input--style-4 js-datepicker" type="text" readonly="readonly" name="birthday" id="birthday" value="" required>
                                             <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                         <?php } else { ?>
                                             <input class="input--style-4 js-datepicker" type="text" readonly="readonly" name="birthday" id="birthday" value='<?php echo $birthdate ?>' required>
@@ -200,13 +200,12 @@
                 document.getElementById("newPassword_1").value = '';
                 document.getElementById("newPassword_2").value = '';
 
-            } else if (document.getElementById("old_password").value != document.getElementById("password").value) {
-                alert("รหัสผ่านไม่ถูกต้อง");
-                document.getElementById("password").value = '';
-
             } else if (document.getElementById("username").value.length < 6 || document.getElementById("username").value.length > 10) {
                 alert("ชื่อผู้ใช้ต้องมีไม่น้อยกว่า 6 ตัวอักษร และ ห้ามเกิน 10 ตัวอักษร");
-                document.getElementById("password").value = '';
+                document.getElementById("username").value = '';
+            } else if (document.getElementById("birthday").value.length < 5) {
+                alert("กรุณาระบุวัน/เดือน/ปี เกิด");
+                document.getElementById("birthday").value = '';
 
             } else if (document.getElementById("contact_number").value.length < 10) {
                 alert("เบอร์โทรศัพท์ไม่ถูกต้อง");
