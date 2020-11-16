@@ -225,7 +225,7 @@ include('../require/connectDB.php');
     }
 
     function deletestaff(username) {
-        if (confirm("แน่ใจนะที่จะลบพนักงานนี้"))
+        if (confirm("แน่ใจนะที่จะลบพนักงานนี้ออกจากระบบ"))
             $.ajax({
                 url: "./Staff_db/DeleteStaff.php",
                 method: "POST",
