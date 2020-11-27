@@ -313,6 +313,13 @@ require_once("../require/connectDB.php");
                 <button type="button" class="btn btn-success col-2" data-toggle="modal" data-target="#insertFood" onclick="insertFoodButton();">เพิ่มอาหาร</button>
             </div>
         <?php
+        } elseif ($_SESSION['role'] == 'KitchenStaff') {
+        ?>
+            <div class="row pb-2">
+                <div class="col-10"></div>
+                <button type="button" class="btn btn-warning col-2" onclick="window.location='./changeStatus/changeStatus.php'">แก้ไขสถานะอาหาร</button>
+            </div>
+        <?php
         }
         ?>
         <div id="foodTypeBar">
