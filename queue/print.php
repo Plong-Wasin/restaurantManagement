@@ -15,13 +15,14 @@
 
 
     ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        window.onload = function() {
+        $(document).ready(function() {
             print();
             setTimeout(() => {
                 close();
             }, 1000);
-        }
+        });
     </script>
 </body>
 

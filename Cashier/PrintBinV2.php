@@ -18,11 +18,13 @@ $casha = $_GET["cash"]; ?>
     $totalPrice = 0;
     $change = 0;
     $cash = 0;
-    $db1 = "SELECT * FROM `check_in` WHERE `check_in_id` = '$getCheckInId'";
+    $db1 = "SELECT *,date(paid_timestamp) AS datePaid,time(paid_timestamp) AS timePaid FROM `check_in` WHERE `check_in_id` = '$getCheckInId'";
     $check2 = mysqli_query($conn, $db1);
     while ($record2 = mysqli_fetch_array($check2, MYSQLI_ASSOC)) {
         $code = $record2['code'];
         $table = $record2['table_id'];
+        $datePaid = $record2['datePaid'];
+        $timePaid = $record2['timePaid'];
     }
     $db = "SELECT * FROM `setting` WHERE `name` = 'background'";
     $check1 = mysqli_query($conn, $db);
@@ -53,9 +55,9 @@ $casha = $_GET["cash"]; ?>
                     <td style="padding-left: 60px;">โต๊ะที่:<?php echo $table ?></td>
                 </tr>
                 <tr>
-                    <td><?php echo "วันที่:" . date("d/m/Y"); ?></td>
+                    <td><?php echo "วันที่:" . $datePaid; ?></td>
                     <?php date_default_timezone_set("Asia/Bangkok"); ?>
-                    <td style="padding-left: 25px;">เวลา:<?php echo date("H:i:s"); ?></td>
+                    <td style="padding-left: 25px;">เวลา:<?php echo $timePaid; ?></td>
                 </tr>
             </table>
             <table>
